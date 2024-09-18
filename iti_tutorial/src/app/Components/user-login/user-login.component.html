@@ -1,0 +1,4 @@
+<div class="container d-flex gap-5 m-5 justify-content-center">
+  <button type="button" [disabled]="isUserLogged" class="btn btn-primary" (click)="login()">Login</button>
+  <button type="button" [disabled]="!isUserLogged" class="btn btn-primary" (click)="logout()">Logout</button>
+</div>

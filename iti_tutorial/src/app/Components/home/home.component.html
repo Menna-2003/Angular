@@ -1,0 +1,36 @@
+<ul class="cards">
+  <li class="cards__item" *ngFor="let category of categories; let i = index">
+    <div class="card">
+      <div class="card__image card__image--fence">
+        <img [src]="category.img" alt="">
+      </div>
+      <div class="card__content">
+        <div class="card__title text-center">{{category.name}}</div>
+        <p class="card__text mt-3">{{category.description}}</p>
+        <button class="btn btn--block card__btn">View Products</button>
+      </div>
+    </div>
+  </li>
+</ul>
+
+
+
+
+<!-- ^ interpolation {{...}} -->
+<!-- <img src="{{storeData.ImageURL}}"> -->
+<!-- ^ property binding [src] -->
+<!-- <img *ngIf="isImageShown" [src]="storeData.ImageURL" /> -->
+
+<!-- <h1>{{ storeData.name }}</h1> -->
+
+<!-- & Da el update elgedid fe angular 17 -->
+<!-- @for (item of storeData.branches; track item) {
+<p>{{ item }}</p>
+} -->
+<!-- ~ Structural directive -->
+<!-- <ul>
+  <li *ngFor="let item of storeData.branches">{{ item }}</li>
+</ul> -->
+
+<!--^ we can't write JS in html but we wite the event in () then the name of the function that is in the ts file -->
+<!-- <button class="btn btn-primary" (click)="ToggleImage()">toggle image</button> -->

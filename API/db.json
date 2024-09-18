@@ -1,0 +1,86 @@
+{
+    "categories": [
+        {
+            "id": "0",
+            "name": "All",
+            "img": "https://images.pexels.com/photos/38519/macbook-laptop-ipad-apple-38519.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "description": "This is the shorthand for flex-grow, flex-shrink and flex-basis combined. "
+        },
+        {
+            "id": "1",
+            "name": "laptops",
+            "img": "https://images.pexels.com/photos/18105/pexels-photo.jpg",
+            "description": "This is the shorthand for flex-grow, flex-shrink and flex-basis combined. "
+        },
+        {
+            "id": "2",
+            "name": "tablets",
+            "img": "https://images.pexels.com/photos/1251844/pexels-photo-1251844.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "description": "This is the shorthand for flex-grow, flex-shrink and flex-basis combined. "
+        },
+        {
+            "id": "3",
+            "name": "mobiles",
+            "img": "https://images.pexels.com/photos/18525573/pexels-photo-18525573/free-photo-of-iphone-15-pro-max-box-in-natural-titanium-color-mention-zana_qaradaghy-on-instagram-while-use-this-photo-follow-on-instagram-zana_qaradaghy.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "description": "This is the shorthand for flex-grow, flex-shrink and flex-basis combined. "
+        }
+    ],
+    "Products": [
+        {
+            "id": "0",
+            "name": "Laptop",
+            "price": 25000,
+            "quantity": 1,
+            "imgURL": "https://picsum.photos/150/70",
+            "categoryID": 1
+        },
+        {
+            "id": "1",
+            "name": "playstation",
+            "price": 5000,
+            "quantity": 0,
+            "imgURL": "https://picsum.photos/150/70",
+            "categoryID": 2
+        },
+        {
+            "id": "2",
+            "name": "Iphone 16",
+            "price": 66000,
+            "quantity": 2,
+            "imgURL": "https://picsum.photos/150/70",
+            "categoryID": 3
+        },
+        {
+            "id": "3",
+            "name": "Iphone 15 pro max",
+            "price": 67000,
+            "quantity": 50,
+            "imgURL": "https://picsum.photos/150/70",
+            "categoryID": 3
+        },
+        {
+            "id": "4",
+            "name": "PC",
+            "price": 8000,
+            "quantity": 13,
+            "imgURL": "https://picsum.photos/150/70",
+            "categoryID": 1
+        },
+        {
+            "id": "5",
+            "name": "PC2",
+            "price": 2000,
+            "quantity": 0,
+            "imgURL": "https://picsum.photos/150/70",
+            "categoryID": 1
+        },
+        {
+            "id": "6",
+            "name": "playstation",
+            "price": 5660,
+            "quantity": 15,
+            "imgURL": "https://picsum.photos/150/70",
+            "categoryID": 2
+        }
+    ]
+}

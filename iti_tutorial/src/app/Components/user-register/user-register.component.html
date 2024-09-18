@@ -1,0 +1,107 @@
+<!--~  Reactive Form  -->
+
+<form class="container m-5" [formGroup]="userRegisterForm" (ngSubmit)="submit()">
+    <div class="form-group mt-3 mb-2">
+        <label for="fullname">Full Name</label>
+        <input formControlName="fullname" type="text" class="form-control" id="fullname" name="fullname" />
+        <div class="text-danger" [hidden]="FullName?.valid || FullName?.untouched">
+            <small *ngIf="FullName?.errors?.['required']">Full name is required</small>
+            <small *ngIf="FullName?.errors?.['pattern']">Full name must be at least 3 letters,
+                '{{FullName?.errors?.['pattern'].actualValue}}' doesn't match</small>
+        </div>
+    </div>
+
+    <div class="form-group mt-3 mb-2">
+        <label for="email">Email</label>
+        <input formControlName="email" type="email" class="form-control" id="email" name="email" />
+        <div class="text-danger" [hidden]="Email?.valid || Email?.untouched">
+            <small *ngIf="Email?.errors?.['required']">Email is required</small>
+            <small *ngIf="Email?.errors?.['ExistEmail']">Exist Email</small>
+            <small *ngIf="Email?.errors?.['email']">Wrong email format</small>
+        </div>
+    </div>
+
+    <div formArrayName="phoneNumber"> <!-- bind on form array -->
+        <!--! loop over array controls not the array itself -->
+        <div *ngFor="let phoneNumber of PhoneNumber.controls; let i = index" class="form-group mt-3 mb-2">
+            <label for="{{'userPhone'+ i}}">Phone Number - {{i+1}}</label>
+            <div class="d-flex gap-2">
+                <!-- kol input by- bind bel index bta3o [formControlName]="i"-->
+                <input [formControlName]="i" type="tel" class="form-control" id="{{'userPhone'+ i}}"
+                    name="phonenumber" />
+            </div>
+        </div>
+        <!--^ handeling: disable the button if the last input is empty -->
+        <!--^ handeling: add remove button to each input -->
+        <button class="btn btn-success" (click)="AddPhone()">+</button>
+    </div>
+
+    <div class="row">
+        <div class="form-group mt-3 mb-2 col-6">
+            <label for="password">Password</label>
+            <input formControlName="password" type="password" class="form-control" id="password" name="password" />
+            <div class="text-danger" [hidden]="Password?.untouched">
+                <small *ngIf="Password?.errors?.['required']">Password is required</small>
+            </div>
+        </div>
+
+        <div class="form-group mt-3 mb-2 col-6">
+            <label for="confirmPassword">Confirm Password</label>
+            <input formControlName="confirmPassword" type="password" class="form-control" id="confirmPassword"
+                name="confirmPassword" />
+            <div class="text-danger" [hidden]="ConfirmPassword?.untouched || Password?.untouched">
+                <small *ngIf="ConfirmPassword?.errors?.['required']">Password is required <br></small>
+                <small *ngIf="userRegisterForm?.errors?.['UnmatchPasswords'] && !ConfirmPassword?.errors?.['required'] ">Passwords must match</small>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row" formGroupName="address">
+        <div class="form-group mt-3 mb-2 col-4">
+            <label for="city">city</label>
+            <input formControlName="city" type="text" class="form-control" id="city" name="city" />
+        </div>
+        <div class="form-group mt-3 mb-2 col-4">
+            <label for="postalCode">postalCode</label>
+            <input formControlName="postalCode" type="number" class="form-control" id="postalCode" name="postalCode" />
+        </div>
+        <div class="form-group mt-3 mb-2 col-4">
+            <label for="street">street</label>
+            <input formControlName="street" type="text" class="form-control" id="street" name="street" />
+        </div>
+    </div>
+
+    <div class="btn-group mt-3" role="group" aria-label="Basic radio toggle button group">
+        <input formControlName="referral" value="socialMedia" type="radio" class="btn-check" name="referral"
+            id="btnradio1" autocomplete="off" (change)="UpdateReferralValidator()">
+        <label class="btn btn-outline-success" for="btnradio1">Social Media</label>
+
+        <input formControlName="referral" value="friends" type="radio" class="btn-check" name="referral" id="btnradio2"
+            autocomplete="off" (change)="UpdateReferralValidator()">
+        <label class="btn btn-outline-success" for="btnradio2">Friends</label>
+
+        <input formControlName="referral" value="other" type="radio" class="btn-check" name="referral" id="btnradio3"
+            autocomplete="off" (change)="UpdateReferralValidator()">
+        <label class="btn btn-outline-success" for="btnradio3">Other</label>
+    </div>
+
+    <div class="form-group mt-3 mb-2 col-4" *ngIf="Referral?.value === 'other'">
+        <label for="other">Specify</label>
+        <input formControlName="referralOther" type="text" class="form-control" id="other" name="street" />
+    </div>
+
+    <button type="submit" [disabled]="userRegisterForm.invalid"
+        class="btn btn-success mt-3 mb-2 d-block">Submit</button>
+</form>
+
+<hr>
+
+<div class="text-danger">
+    <div>{{userRegisterForm.value|json}}</div><br>
+    <!-- <div>{{userRegisterForm.get('fullname')?.errors|json}}</div><br> -->
+    <div>userRegisterForm errors: {{userRegisterForm.errors|json}}</div><br>
+    <div>Email: {{userRegisterForm.get('email')?.errors|json}}</div><br>
+    <!-- <button (click)="FillForm()" class="btn btn-secondary mt-3 mb-2">FillForm</button><br> -->
+    <div>Referral: {{userRegisterForm.get('referralOther')?.errors|json}}</div>
+</div>

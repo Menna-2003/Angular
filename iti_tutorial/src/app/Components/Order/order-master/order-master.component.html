@@ -1,0 +1,61 @@
+<h3>Crete your Order</h3>
+<div class="Two-way-binding">
+  <!-- ^ Two way binding  -->
+  <label for="category" class="form-label">Category</label>
+  <div class="d-flex gap-3">
+    <!-- & ngModel won't work unless 'FormsModule' is imported in app.module  -->
+    <select name="category" id="category" class="form-control" [(ngModel)]="selectedCategoryid">
+      <option *ngFor="let cat of categoryList" [value]="cat.id">
+        {{ cat.name }}
+      </option>
+    </select>
+    <button class="btn btn-success" (click)="ResetCategories()">
+      Reset Categories
+    </button>
+  </div>
+</div>
+
+<hr />
+
+<app-product-list [sentSelectedCategoryID]="selectedCategoryid" (totalPriceChanged)="onTotalPriceChange($event)"
+  (productToSend)="onRecievedChanges($event)"></app-product-list>
+
+<table class="table m-5">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col">Name</th>
+      <th scope="col">Total price</th>
+      <th scope="col">Needed quantity</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let productViewModel of productViewModelList; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td><img [src]="productViewModel?.product?.imgURL" alt="" /></td>
+      <td> {{ productViewModel?.product?.name }} </td>
+      <td>{{ productViewModel?.totalPrice | currency : "EUR" : "code" }}</td>
+      <td>{{ productViewModel?.neededQuantity }}</td>
+      <td>
+        <a [routerLink]="['/Products', productViewModel.product?.id]" class="btn btn-primary m-2"
+          role="button">Details</a>
+        <button class="btn btn-danger" (click)="DeleteFromCart(productViewModel)">
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="row m-5 justify-content-between">
+  <h1 class="col-6" style="font-weight: bold">
+    Order Total Price: {{ receivedOrderTotalPrice | currency : "EUR" }}
+  </h1>
+
+  <button class="btn btn-primary col-6" style="width: 200px" (click)="PlaceOrder()">
+    Confirm Order
+  </button>
+</div>

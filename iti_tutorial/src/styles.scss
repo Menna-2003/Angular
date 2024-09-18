@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Define the custom styles for the snack bar */
+.custom-snackbar {
+    background-color: #4343e7; /* Green background */
+    color: white; /* White text */
+    font-size: 16px; /* Larger font size */
+    border-radius: 8px; /* Rounded corners */
+    text-align: center; /* Center align text */
+    padding: 10px 20px; /* Padding */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  /* Style the action button inside the snackbar */
+.custom-snackbar .mat-simple-snackbar-action {
+    color: #ffffff; /* Custom color for the action button */
+    font-weight: bold; /* Make the action button text bold */
+  }
