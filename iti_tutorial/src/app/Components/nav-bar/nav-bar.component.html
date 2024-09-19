@@ -1,0 +1,72 @@
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="#!"><img src="assets/images/logo.png" alt=""></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+                class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="/Home" routerLinkActive="active">
+                        Home
+                    </a>
+                </li>
+                <!-- <li class="nav-item"><a class="nav-link" routerLink="/Products" routerLinkActive="active">Shop</a></li> -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">Shop</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" routerLink="/Products" routerLinkActive="active">All Products</a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+                        <!-- <li><a class="dropdown-item" href="#!">Popular Items</a></li> -->
+                        <!-- <li><a class="dropdown-item" href="#!">New Arrivals</a></li> -->
+                        <li><a class="dropdown-item" routerLink="/Admin/AddProduct">Add Product</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="d-flex gap-2">
+                <ng-container *ngIf="!isUserLogged">
+                    <li (click)="login()" class="d-flex align-items-center" style="cursor: pointer;"><a
+                            class="nav-item nav-link text-light" routerLinkActive="active">Login</a>
+                    </li>
+                    <li class="d-flex align-items-center"><a class="nav-item nav-link text-light" routerLink="/Register"
+                            routerLinkActive="active">Register</a></li>
+                </ng-container>
+
+                <ng-container *ngIf="isUserLogged">
+                    <li class="nav-item dropdown text-light">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">Profile</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" routerLink="/User/UserProfile"
+                                    routerLinkActive="active">ViewProfile</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li><a class="dropdown-item" routerLink="/User/EditUserProfile">Edit Profile</a></li>
+                            <li (click)="logout()" style="cursor: pointer;"><a class="dropdown-item">Logout</a></li>
+                        </ul>
+                    </li>
+
+                    <button class="btn btn-outline-light d-flex align-items-center justify-content-center gap-2"
+                        type="submit">
+                        <mat-icon>shopping_cart</mat-icon>
+                        Cart
+                        <span class="badge bg-light text-dark ms-1 rounded-pill">0</span>
+                    </button>
+                    <button class="btn btn-outline-light d-flex align-items-center justify-content-center gap-2"
+                        type="submit">
+                        <mat-icon>favorite</mat-icon>
+                        Favourites
+                    </button>
+
+                </ng-container>
+            </form>
+        </div>
+    </div>
+</nav>

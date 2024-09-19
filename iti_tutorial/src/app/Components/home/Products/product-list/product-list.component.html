@@ -1,0 +1,98 @@
+<div class="container px-4 px-lg-5 mt-5">
+  <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+    <div class="col mb-5" *ngFor="let product of productsByCategory; let i = index">
+      <div class="card h-100">
+        <!-- Product image-->
+        <img class="card-img-top" [src]="product.imgURL" alt="..." />
+        <!-- Product details-->
+        <div class="card-body p-4">
+          <div class="text-center">
+            <!-- Product name-->
+            <h3 class="fw-bolder">{{product.name}}</h3>
+            <!-- Product reviews-->
+            <div class="d-flex justify-content-center small text-warning mb-2">
+              <mat-icon>star</mat-icon>
+              <mat-icon>star</mat-icon>
+              <mat-icon>star</mat-icon>
+              <mat-icon>star</mat-icon>
+              <mat-icon>star_border</mat-icon>
+              <!-- <mat-icon style="color:rgb(25, 51, 220) ;">bookmark_border</mat-icon> -->
+            </div>
+            <!-- Product price-->
+            {{product.price | currency}}
+          </div>
+        </div>
+        <!-- Product actions-->
+        <div
+          class="card-footer p-4 pt-0 border-top-0 bg-transparent d-flex align-items-center justify-content-center gap-2">
+          <div class="text-center"><a class="btn btn-outline-dark mt-auto" [routerLink]="['/Products', product.id]">View
+              Details</a></div>
+          <mat-icon>favorite_border</mat-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="false">
+  <div class="d-flex justify-content-end me-5 ms-5 mt-2">
+    <button class="btn btn-primary" [routerLink]="['/Products/Add']">Add New Product</button>
+  </div>
+  <table class="table m-auto mt-0 w-100">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th>Needed Quantity</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let product of productsByCategory; let i = index" [ngClass]="{
+        outOfStock: product.quantity == 0,
+        warning: product.quantity == 1 || product.quantity == 2
+      }">
+        <!--* Safe navigator operator '?' lw shakek eno mmkn ykon b null -->
+        <td>{{ i + 1 }}</td>
+        <td>
+          <img [src]="product?.imgURL" LightBox="25px" alt="productImage" srcset="" />
+        </td>
+        <td>{{ product?.name }}</td>
+        <td>{{ product?.price | currency : "EUR" : "code" }}</td>
+        <!--~ <ng-template> element defines a template that is not rendered by default.  you can define template content that is only being rendered by Angular when you, whether directly or indirectly, specifically instruct it to do so, allowing you to have full control over how and when the content is displayed. -->
+        <!-- <td>
+          <div *ngIf="product.quantity != 0; else outOfStock">
+            {{ product?.quantity }}
+          </div>
+          <ng-template #outOfStock>Out Of Stock</ng-template>
+        </td> -->
+        <!--~ ngSwitch -->
+        <td>
+          <ng-container [ngSwitch]="product.quantity">
+            <div *ngSwitchCase="0">Out of Stock</div>
+            <div *ngSwitchCase="1">Last Item!</div>
+            <div *ngSwitchCase="2">Last 2 Items!</div>
+            <div *ngSwitchDefault>{{ product.quantity }}</div>
+          </ng-container>
+        </td>
+        <!--& template variable: is a referance   #name   -->
+        <td>
+          <input #itemsCount type="number" min="0" required [max]="product.quantity" class="form-control w-50"
+            id="NeededQuantity" />
+        </td>
+        <td>
+          <!-- <button class="btn btn-primary m-2" (click)="OpenProductDetails(product.id)">  Details </button> -->
+          <!--~ instead of button and click just use the link -->
+          <a [routerLink]="['/Products', product.id]" class="btn btn-primary m-2" role="button">Details</a>
+          <button class="btn btn-success m-2" (click)="Buy(product.price, itemsCount.value, product.id, itemsCount)">
+            Buy
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

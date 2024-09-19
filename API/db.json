@@ -1,86 +1,221 @@
 {
-    "categories": [
-        {
-            "id": "0",
-            "name": "All",
-            "img": "https://images.pexels.com/photos/38519/macbook-laptop-ipad-apple-38519.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "description": "This is the shorthand for flex-grow, flex-shrink and flex-basis combined. "
-        },
-        {
-            "id": "1",
-            "name": "laptops",
-            "img": "https://images.pexels.com/photos/18105/pexels-photo.jpg",
-            "description": "This is the shorthand for flex-grow, flex-shrink and flex-basis combined. "
-        },
-        {
-            "id": "2",
-            "name": "tablets",
-            "img": "https://images.pexels.com/photos/1251844/pexels-photo-1251844.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "description": "This is the shorthand for flex-grow, flex-shrink and flex-basis combined. "
-        },
-        {
-            "id": "3",
-            "name": "mobiles",
-            "img": "https://images.pexels.com/photos/18525573/pexels-photo-18525573/free-photo-of-iphone-15-pro-max-box-in-natural-titanium-color-mention-zana_qaradaghy-on-instagram-while-use-this-photo-follow-on-instagram-zana_qaradaghy.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "description": "This is the shorthand for flex-grow, flex-shrink and flex-basis combined. "
-        }
-    ],
-    "Products": [
-        {
-            "id": "0",
-            "name": "Laptop",
-            "price": 25000,
-            "quantity": 1,
-            "imgURL": "https://picsum.photos/150/70",
-            "categoryID": 1
-        },
-        {
-            "id": "1",
-            "name": "playstation",
-            "price": 5000,
-            "quantity": 0,
-            "imgURL": "https://picsum.photos/150/70",
-            "categoryID": 2
-        },
-        {
-            "id": "2",
-            "name": "Iphone 16",
-            "price": 66000,
-            "quantity": 2,
-            "imgURL": "https://picsum.photos/150/70",
-            "categoryID": 3
-        },
-        {
-            "id": "3",
-            "name": "Iphone 15 pro max",
-            "price": 67000,
-            "quantity": 50,
-            "imgURL": "https://picsum.photos/150/70",
-            "categoryID": 3
-        },
-        {
-            "id": "4",
-            "name": "PC",
-            "price": 8000,
-            "quantity": 13,
-            "imgURL": "https://picsum.photos/150/70",
-            "categoryID": 1
-        },
-        {
-            "id": "5",
-            "name": "PC2",
-            "price": 2000,
-            "quantity": 0,
-            "imgURL": "https://picsum.photos/150/70",
-            "categoryID": 1
-        },
-        {
-            "id": "6",
-            "name": "playstation",
-            "price": 5660,
-            "quantity": 15,
-            "imgURL": "https://picsum.photos/150/70",
-            "categoryID": 2
-        }
-    ]
+  "categories": [
+    {
+      "id": "0",
+      "name": "All",
+      "img": "https://images.pexels.com/photos/38519/macbook-laptop-ipad-apple-38519.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "description": "This is the shorthand for flex-grow, flex-shrink and flex-basis combined."
+    },
+    {
+      "id": "1",
+      "name": "Laptops",
+      "img": "https://images.pexels.com/photos/18105/pexels-photo.jpg",
+      "description": "This is the shorthand for flex-grow, flex-shrink and flex-basis combined."
+    },
+    {
+      "id": "2",
+      "name": "Smart phones",
+      "img": "https://images.pexels.com/photos/18525573/pexels-photo-18525573/free-photo-of-iphone-15-pro-max-box-in-natural-titanium-color-mention-zana_qaradaghy-on-instagram-while-use-this-photo-follow-on-instagram-zana_qaradaghy.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "description": "This is the shorthand for flex-grow, flex-shrink and flex-basis combined."
+    },
+    {
+      "id": "3",
+      "name": "Tablets",
+      "img": "https://images.pexels.com/photos/1251844/pexels-photo-1251844.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "description": "This is the shorthand for flex-grow, flex-shrink and flex-basis combined."
+    }
+  ],
+  "Products": [
+    {
+      "id": "5",
+      "name": "Acer Swift 3",
+      "price": 54999,
+      "quantity": 8,
+      "imgURL": "https://images.pexels.com/photos/18105/pexels-photo.jpg",
+      "categoryID": 1,
+      "categoryName": "Laptops"
+    },
+    {
+      "id": "3",
+      "name": "Lenovo ThinkPad X1",
+      "price": 84999,
+      "quantity": 12,
+      "imgURL": "https://images.pexels.com/photos/18105/pexels-photo.jpg",
+      "categoryID": 1,
+      "categoryName": "Laptops"
+    },
+    {
+      "id": "14",
+      "name": "Xiaomi Mi 13",
+      "price": 45999,
+      "quantity": 22,
+      "imgURL": "https://images.pexels.com/photos/18525573/pexels-photo-18525573/free-photo-of-iphone-15-pro-max-box-in-natural-titanium-color-mention-zana_qaradaghy-on-instagram-while-use-this-photo-follow-on-instagram-zana_qaradaghy.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "categoryID": 2,
+      "categoryName": "Smartphones"
+    },
+    {
+      "id": "11",
+      "name": "OnePlus 11",
+      "price": 56999,
+      "quantity": 18,
+      "imgURL": "https://images.pexels.com/photos/18525573/pexels-photo-18525573/free-photo-of-iphone-15-pro-max-box-in-natural-titanium-color-mention-zana_qaradaghy-on-instagram-while-use-this-photo-follow-on-instagram-zana_qaradaghy.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "categoryID": 2,
+      "categoryName": "Smartphones"
+    },
+    {
+      "id": "16",
+      "name": "iPad Pro 11",
+      "price": 79999,
+      "quantity": 6,
+      "imgURL": "https://images.pexels.com/photos/1251844/pexels-photo-1251844.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "categoryID": 3,
+      "categoryName": "Tablets"
+    },
+    {
+      "id": "9",
+      "name": "HP Envy 13",
+      "price": 84999,
+      "quantity": 9,
+      "imgURL": "https://images.pexels.com/photos/18105/pexels-photo.jpg",
+      "categoryID": 1,
+      "categoryName": "Laptops"
+    },
+    {
+      "id": "0",
+      "name": "Dell XPS 13",
+      "price": 99999,
+      "quantity": 10,
+      "imgURL": "https://images.pexels.com/photos/18105/pexels-photo.jpg",
+      "categoryID": 1,
+      "categoryName": "Laptops"
+    },
+    {
+      "id": "13",
+      "name": "iPhone 14 Pro",
+      "price": 129999,
+      "quantity": 10,
+      "imgURL": "https://images.pexels.com/photos/18525573/pexels-photo-18525573/free-photo-of-iphone-15-pro-max-box-in-natural-titanium-color-mention-zana_qaradaghy-on-instagram-while-use-this-photo-follow-on-instagram-zana_qaradaghy.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "categoryID": 2,
+      "categoryName": "Smartphones"
+    },
+    {
+      "id": "19",
+      "name": "Lenovo Tab P12",
+      "price": 54999,
+      "quantity": 15,
+      "imgURL": "https://images.pexels.com/photos/1251844/pexels-photo-1251844.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "categoryID": 3,
+      "categoryName": "Tablets"
+    },
+    {
+      "id": "18",
+      "name": "Microsoft Surface Pro 9",
+      "price": 129999,
+      "quantity": 7,
+      "imgURL": "https://images.pexels.com/photos/1251844/pexels-photo-1251844.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "categoryID": 3,
+      "categoryName": "Tablets"
+    },
+    {
+      "id": "15",
+      "name": "Sony Xperia 1 IV",
+      "price": 74999,
+      "quantity": 8,
+      "imgURL": "https://images.pexels.com/photos/18525573/pexels-photo-18525573/free-photo-of-iphone-15-pro-max-box-in-natural-titanium-color-mention-zana_qaradaghy-on-instagram-while-use-this-photo-follow-on-instagram-zana_qaradaghy.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "categoryID": 2,
+      "categoryName": "Smartphones"
+    },
+    {
+      "id": "17",
+      "name": "Samsung Galaxy Tab S8",
+      "price": 69999,
+      "quantity": 12,
+      "imgURL": "https://images.pexels.com/photos/1251844/pexels-photo-1251844.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "categoryID": 3,
+      "categoryName": "Tablets"
+    },
+    {
+      "id": "12",
+      "name": "Google Pixel 8",
+      "price": 64999,
+      "quantity": 14,
+      "imgURL": "https://images.pexels.com/photos/18525573/pexels-photo-18525573/free-photo-of-iphone-15-pro-max-box-in-natural-titanium-color-mention-zana_qaradaghy-on-instagram-while-use-this-photo-follow-on-instagram-zana_qaradaghy.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "categoryID": 2,
+      "categoryName": "Smartphones"
+    },
+    {
+      "id": "4",
+      "name": "Asus ZenBook 14",
+      "price": 74999,
+      "quantity": 15,
+      "imgURL": "https://images.pexels.com/photos/18105/pexels-photo.jpg",
+      "categoryID": 1,
+      "categoryName": "Laptops"
+    },
+    {
+      "id": "10",
+      "name": "Samsung Galaxy S23",
+      "price": 49999,
+      "quantity": 20,
+      "imgURL": "https://images.pexels.com/photos/18525573/pexels-photo-18525573/free-photo-of-iphone-15-pro-max-box-in-natural-titanium-color-mention-zana_qaradaghy-on-instagram-while-use-this-photo-follow-on-instagram-zana_qaradaghy.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "categoryID": 2,
+      "categoryName": "Smartphones"
+    },
+    {
+      "id": "8",
+      "name": "Dell Inspiron 15",
+      "price": 69999,
+      "quantity": 11,
+      "imgURL": "https://images.pexels.com/photos/18105/pexels-photo.jpg",
+      "categoryID": 1,
+      "categoryName": "Laptops"
+    },
+    {
+      "id": "7",
+      "name": "Razer Blade 15",
+      "price": 149999,
+      "quantity": 4,
+      "imgURL": "https://images.pexels.com/photos/18105/pexels-photo.jpg",
+      "categoryID": 1,
+      "categoryName": "Laptops"
+    },
+    {
+      "id": "6",
+      "name": "Microsoft Surface Laptop 4",
+      "price": 89999,
+      "quantity": 6,
+      "imgURL": "https://images.pexels.com/photos/18105/pexels-photo.jpg",
+      "categoryID": 1,
+      "categoryName": "Laptops"
+    },
+    {
+      "id": "20",
+      "name": "Huawei MatePad Pro",
+      "price": 64999,
+      "quantity": 11,
+      "imgURL": "https://images.pexels.com/photos/1251844/pexels-photo-1251844.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "categoryID": 3,
+      "categoryName": "Tablets"
+    },
+    {
+      "id": "2",
+      "name": "HP Spectre x360",
+      "price": 109999,
+      "quantity": 7,
+      "imgURL": "https://images.pexels.com/photos/18105/pexels-photo.jpg",
+      "categoryID": 1,
+      "categoryName": "Laptops"
+    },
+    {
+      "id": "1",
+      "name": "MacBook Air M2",
+      "price": 129999,
+      "quantity": 5,
+      "imgURL": "https://images.pexels.com/photos/18105/pexels-photo.jpg",
+      "categoryID": 1,
+      "categoryName": "Laptops"
+    }
+  ],
+  "Cart": [],
+  "Favourites": []
 }

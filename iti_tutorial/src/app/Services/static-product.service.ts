@@ -11,59 +11,21 @@ export class StaticProductService {
     this.productList = [
       {
         id: 0,
-        name: 'Laptop',
-        price: 10082200,
-        quantity: 1,
-        imgURL: 'https://picsum.photos/150/70',
+        name: 'Product 1',
+        price: 100,
+        quantity: 10,
+        imgURL: 'image1.jpg',
         categoryID: 1,
+        categoryName: 'Laptops' // Add categoryName here
       },
       {
         id: 1,
-        name: 'playstation',
-        price: 600000,
-        quantity: 0,
-        imgURL: 'https://picsum.photos/150/70',
-        categoryID: 2,
-      },
-      {
-        id: 2,
-        name: 'smart phone',
-        price: 1.0,
-        quantity: 2,
-        imgURL: 'https://picsum.photos/150/70',
-        categoryID: 3,
-      },
-      {
-        id: 3,
-        name: 'smart phone2',
-        price: 12022,
-        quantity: 50,
-        imgURL: 'https://picsum.photos/150/70',
-        categoryID: 3,
-      },
-      {
-        id: 4,
-        name: 'PC',
-        price: 800,
-        quantity: 1330.56,
-        imgURL: 'https://picsum.photos/150/70',
-        categoryID: 1,
-      },
-      {
-        id: 5,
-        name: 'PC2',
+        name: 'Product 2',
         price: 200,
-        quantity: 0,
-        imgURL: 'https://picsum.photos/150/70',
-        categoryID: 1,
-      },
-      {
-        id: 6,
-        name: 'playstation',
-        price: 5660000,
-        quantity: 15,
-        imgURL: 'https://picsum.photos/150/70',
+        quantity: 5,
+        imgURL: 'image2.jpg',
         categoryID: 2,
+        categoryName: 'Mobiles' // Add categoryName here
       },
     ];
     

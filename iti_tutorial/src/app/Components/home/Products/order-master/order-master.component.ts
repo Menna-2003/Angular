@@ -7,12 +7,12 @@ import {
 } from '@angular/core';
 import { ICategory } from 'src/app/Models/icategory';
 import { ProductViewModel } from 'src/app/ViewModels/product-view-model';
-import { ProductListComponent } from '../product-list/product-list.component';
 
 import { MatDialog } from '@angular/material/dialog'; // Import MatDialog
-import { ConfirmDialogComponent } from '../../../confirm-dialog/confirm-dialog.component'; // Adjust the path to your dialog component
 import { StaticProductService } from 'src/app/Services/static-product.service';
 import { CartService } from 'src/app/Services/cart.service';
+import { ProductListComponent } from '../product-list/product-list.component';
+import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-order-master',

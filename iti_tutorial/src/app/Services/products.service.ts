@@ -5,7 +5,7 @@ import {
   HttpHeaders,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, retry, throwError } from 'rxjs';
+import { catchError, map, Observable, retry, throwError } from 'rxjs';
 import { IProduct } from '../Models/iproduct';
 import { environment } from 'src/environments/environment';
 import { JsonPipe } from '@angular/common';
@@ -24,6 +24,7 @@ export class ProductsService {
       }),
     };
   }
+
   addProduct(newProduct: IProduct): Observable<IProduct> {
     // return this.httpClient.post<IProduct>(`${environment.APIUrl}/Products`, JSON.stringify(newProduct, this.httpOptions));
     return this.httpClient.post<IProduct>(
@@ -41,19 +42,31 @@ export class ProductsService {
       `${environment.APIUrl}/Products/${id}`
     );
   }
-
+  getCategoryById(id: number): Observable<ICategory> {
+    return this.httpClient.get<ICategory>(
+      `${environment.APIUrl}/categories/${id}`
+    );
+  }
   getCategories(): Observable<ICategory[]> {
     return this.httpClient.get<ICategory[]>(`${environment.APIUrl}/categories`);
   }
-
-  getProductsBuCategoryId(cId: number): Observable<IProduct[]> {
+  getProductsByCategoryId(cId: number): Observable<IProduct[]> {
     return this.httpClient.get<IProduct[]>(
       `${environment.APIUrl}/Products?categoryID=${cId}`
     );
   }
-
+  editProduct(product: IProduct): Observable<IProduct> {
+    const url = `${environment.APIUrl}/${product.id}`;
+    return this.httpClient.put<IProduct>(url, product);
+  }
   DeleteProduct(id: number) { }
-  getProductIds() { }
+
+  getFourProductByCategoryID(cId: number): Observable<IProduct[]> {
+    return this.httpClient.get<IProduct[]>(`${environment.APIUrl}/Products?categoryID=${cId}`)
+    .pipe(
+      map(products => products.slice(0, 4))
+    );
+  }
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {

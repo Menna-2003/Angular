@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ICategory } from 'src/app/Models/icategory';
+import { IProduct } from 'src/app/Models/iproduct';
 import { StoreData } from 'src/app/Models/store-data';
 import { ProductsService } from 'src/app/Services/products.service';
 import { PromotionAdsService } from 'src/app/Services/promotion-ads.service';
@@ -13,22 +15,20 @@ export class HomeComponent implements OnInit {
   // storeData: StoreData;
   // isImageShown: boolean = true;
 
-  categories: ICategory[] = [];
+  Categories: ICategory[] = [];
+  Products: IProduct[] = []
+  selectedCategoryid: number = 0;
 
-  constructor(private promotionAds: PromotionAdsService, private productService: ProductsService) {
-    // this.storeData = new StoreData('menna', 'https://picsum.photos/300/200', [
-    //   'Cairo',
-    //   'Alex',
-    //   'Assuit',
-    // ]);
-  }
+  constructor(private promotionAds: PromotionAdsService, private ProductService: ProductsService, private router: Router) { }
 
   ngOnInit(): void {
 
-    this.productService.getCategories().subscribe((category) => {
-      this.categories = category;
-      console.log("category", category)
-      console.log("this.categories",this.categories)
+    this.ProductService.getAllProducts().subscribe((products) => {
+      this.Products = products;
+    });
+
+    this.ProductService.getCategories().subscribe((categories) => {
+      this.Categories = categories.filter(c => c.id != 0);
     });
 
     // let observer = {
@@ -43,6 +43,12 @@ export class HomeComponent implements OnInit {
     //   },
     // };
     // this.promotionAds.getScheduledAds(3).subscribe(observer);
+  }
+
+  ViewProductsByCategory(cId: number) {
+    this.selectedCategoryid = cId;
+    // this.router.navigate(['/Products'], { queryParams: { categoryID: cId } });
+
   }
 
   // ToggleImage() {

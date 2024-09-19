@@ -1,0 +1,70 @@
+<form class="container m-5" #form="ngForm" (ngSubmit)="EditProduct()">
+    <div class="form-group m-3">
+        <label for="productName">Product Name</label>
+        <input type="text" class="form-control" id="productName" name="productName" [(ngModel)]="product.name" required
+            pattern="^[a-zA-Z0-9-_ ]{3,20}$" #ProductNameInput="ngModel" />
+
+        <div [hidden]="ProductNameInput.valid || ProductNameInput.untouched">
+            <small *ngIf="ProductNameInput.errors?.['required']" class="text-danger">Name is required</small>
+            <small *ngIf="ProductNameInput.errors?.['pattern']" class="text-danger">
+                Name must be at least 3 characters long and only contain letters, numbers, - and _
+            </small>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group m-3 col-3">
+            <label for="productPrice">Product Price</label>
+            <input type="number" class="form-control" id="productPrice" name="productPrice" min="0" max="100000000"
+                [(ngModel)]="product.price" #ProductPriceInput="ngModel" required />
+
+            <div [hidden]="ProductPriceInput.valid || ProductPriceInput.untouched">
+                <small *ngIf="ProductPriceInput.errors?.['required']" class="text-danger">Price is required</small>
+                <small *ngIf="ProductPriceInput.errors?.['min']" class="text-danger">Min price is 0</small>
+                <small *ngIf="ProductPriceInput.errors?.['max']" class="text-danger">Max price is 100,000,000</small>
+            </div>
+        </div>
+
+        <div class="form-group m-3 col-3">
+            <label for="productQuantity">Product Quantity</label>
+            <input type="number" class="form-control" id="productQuantity" name="productQuantity" min="1" max="10000"
+                [(ngModel)]="product.quantity" #ProductQuantityInput="ngModel" required />
+
+            <div [hidden]="ProductQuantityInput.valid || ProductQuantityInput.untouched">
+                <small *ngIf="ProductQuantityInput.errors?.['required']" class="text-danger">Quantity is
+                    required</small>
+                <small *ngIf="ProductQuantityInput.errors?.['min']" class="text-danger">Min quantity is 1</small>
+                <small *ngIf="ProductQuantityInput.errors?.['max']" class="text-danger">Max quantity is 10000</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group m-3">
+        <div class="mb-3">
+            <label for="Category" class="form-label">Category</label>
+            <select class="form-select form-select-lg" name="categoryName" id="Category"
+                [(ngModel)]="product.categoryID" #ProductCategoryInput="ngModel" required>
+                <option *ngFor="let category of categoryList" [value]="category.id">
+                    {{ category.name }}
+                </option>
+            </select>
+
+            <div [hidden]="ProductCategoryInput.valid || ProductCategoryInput.untouched">
+                <small *ngIf="ProductCategoryInput.errors?.['required']" class="text-danger">Category is required for a
+                    product</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="m-3">
+        <label for="productImage" class="form-label">Choose Image</label>
+        <input type="file" class="form-control" name="productImage" id="productImage" [(ngModel)]="product.imgURL"
+            #ProductImageInput="ngModel" required />
+
+        <div [hidden]="ProductImageInput.valid || ProductImageInput.untouched">
+            <small *ngIf="ProductImageInput.errors?.['required']" class="text-danger">Image is required</small>
+        </div>
+    </div>
+
+    <button type="submit" [disabled]="form.invalid" class="btn btn-success m-3">Update Product</button>
+</form>

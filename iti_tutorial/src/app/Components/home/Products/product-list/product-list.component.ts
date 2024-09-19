@@ -45,15 +45,15 @@ export class ProductListComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   ngOnChanges(): void {
-    // this.productsByCategory = this.staticProductService.getProductsBuCategoryId( this.sentSelectedCategoryID);
+    // this.productsByCategory = this.staticProductService.getProductsByCategoryId( this.sentSelectedCategoryID);
     if (this.sentSelectedCategoryID != 0) {
-      this.ProductService.getProductsBuCategoryId(
+      this.ProductService.getProductsByCategoryId(
         this.sentSelectedCategoryID
       ).subscribe((products) => {
         this.productsByCategory = products;
+        console.log(products);
       });
-    }
-    else {
+    } else {
       this.ProductService.getAllProducts().subscribe((products) => {
         this.productsByCategory = products;
       });
@@ -82,7 +82,7 @@ export class ProductListComponent implements OnInit, OnChanges, AfterViewInit {
 
       product.subscribe(product => {
         // itemsCountt <= product?.quantity &&
-        if ( Quantity > 0) {
+        if (Quantity > 0) {
           // this.showAddToCartNotification(product?.name || 'Product');
           this.showAddToCartNotification('Product added successfully');
 
