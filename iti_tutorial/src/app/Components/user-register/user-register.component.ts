@@ -9,6 +9,7 @@ import { IUser } from 'src/app/Models/iuser';
   templateUrl: './user-register.component.html',
   styleUrls: ['./user-register.component.scss']
 })
+
 export class UserRegisterComponent implements OnInit {
 
   userRegisterForm: FormGroup;
@@ -31,9 +32,9 @@ export class UserRegisterComponent implements OnInit {
       password: ['', [Validators.required]],
       confirmPassword: ['', [Validators.required]],
       address: this.formBuilder.group({
-        city: ['', [Validators.required]],
+        city: ['', [Validators.required, Validators.pattern('[A-Za-z]{3,}')]],
         postalCode: ['', [Validators.required]],
-        street: ['', [Validators.required]]
+        country: ['', [Validators.required, Validators.pattern('[A-Za-z]{3,}')]]
       }),
       referral: [''],
       referralOther: ['']
@@ -62,6 +63,21 @@ export class UserRegisterComponent implements OnInit {
   get Referral() {
     return this.userRegisterForm.get('referral');
   }
+  get Address() {
+    return this.userRegisterForm.get('address') as FormGroup;
+  }
+  get City() {
+    return this.Address.get('city');
+  }
+  get PostalCode() {
+    return this.Address.get('postalCode');
+  }
+  get Country() {
+    return this.Address.get('country');
+  }
+
+
+
   submit() {
     let userModel: IUser = this.userRegisterForm.value as IUser
 
@@ -83,6 +99,10 @@ export class UserRegisterComponent implements OnInit {
   AddPhone() {
     //! push form control to the array of numbers not array of controls
     this.PhoneNumber.push(this.formBuilder.control(''));
+  }
+
+  RemovePhone(index: number) {
+    this.PhoneNumber.removeAt(index)
   }
 
   //~ Sync validator function

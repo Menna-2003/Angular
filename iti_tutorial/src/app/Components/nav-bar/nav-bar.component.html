@@ -1,5 +1,5 @@
 <!-- Navigation-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: black;">
     <div class="container px-4 px-lg-5">
         <a class="navbar-brand" href="#!"><img src="assets/images/logo.png" alt=""></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -17,7 +17,7 @@
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">Shop</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" routerLink="/Products" routerLinkActive="active">All Products</a>
+                        <li><a class="dropdown-item" routerLink="/Shop" routerLinkActive="active">All Products</a>
                         </li>
                         <li>
                             <hr class="dropdown-divider" />
@@ -53,17 +53,21 @@
                         </ul>
                     </li>
 
-                    <button class="btn btn-outline-light d-flex align-items-center justify-content-center gap-2"
-                        type="submit">
-                        <mat-icon>shopping_cart</mat-icon>
-                        Cart
-                        <span class="badge bg-light text-dark ms-1 rounded-pill">0</span>
-                    </button>
-                    <button class="btn btn-outline-light d-flex align-items-center justify-content-center gap-2"
-                        type="submit">
-                        <mat-icon>favorite</mat-icon>
-                        Favourites
-                    </button>
+
+                    <a routerLink="/Cart" style=" text-decoration: none;">
+                        <button class="btn btn-outline-light d-flex align-items-center justify-content-center gap-2"
+                            type="submit">
+                            <mat-icon>shopping_cart</mat-icon>
+                            Cart
+                            <span class="badge bg-light text-dark ms-1 rounded-pill">{{cartItemsCount}}</span>
+                        </button>
+                    </a>
+                    <a routerLink="/Favourites" style="text-decoration: none;">
+                        <button class="btn btn-outline-light d-flex align-items-center justify-content-center gap-2"
+                            type="submit">
+                            <mat-icon>favorite</mat-icon> Favourites
+                        </button>
+                    </a>
 
                 </ng-container>
             </form>

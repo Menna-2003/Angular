@@ -26,9 +26,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AddProductComponent } from './Components/add-product/add-product.component';
 import { UserRegisterComponent } from './Components/user-register/user-register.component';
 import { NavBarComponent } from './Components/nav-bar/nav-bar.component'; // Import MatSnackBarModule
+import { MatSliderModule } from '@angular/material/slider';
 
 import { MatIconModule } from '@angular/material/icon';
 import { OrderMasterComponent } from './Components/home/Products/order-master/order-master.component';
+import { FavouritesComponent } from './Components/home/Products/favourites/favourites.component';
+import { CartComponent } from './Components/cart/cart.component';
+import { ShopComponent } from './Components/home/Products/shop/shop.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +52,9 @@ import { OrderMasterComponent } from './Components/home/Products/order-master/or
     AddProductComponent,
     UserRegisterComponent,
     NavBarComponent,
+    FavouritesComponent,
+    CartComponent,
+    ShopComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +66,8 @@ import { OrderMasterComponent } from './Components/home/Products/order-master/or
     FontAwesomeModule,
     HttpClientModule,  //& to deal with APIs
     ReactiveFormsModule, //& to use reactive forms
-    MatIconModule
+    MatIconModule,
+    MatSliderModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

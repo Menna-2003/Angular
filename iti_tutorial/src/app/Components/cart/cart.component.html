@@ -1,0 +1,40 @@
+<div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-xl-3 justify-content-center mt-5"
+    style="min-height: 60vb;">
+    <div class="col mb-5" *ngFor="let product of Cart; let i = index">
+        <div class="card h-100">
+            <!-- Product image-->
+            <img class="card-img-top" [src]="product?.product?.imgURL" alt="..." />
+            <!-- Product details-->
+            <div class="card-body p-4 pb-0">
+                <div class="text-center">
+                    <!-- Product name-->
+                    <h3 class="fw-bolder">{{product?.product?.name}}</h3>
+                    <!-- Product reviews-->
+                    <div class="d-flex justify-content-center small text-warning mb-2">
+                        <mat-icon>star</mat-icon>
+                        <mat-icon>star</mat-icon>
+                        <mat-icon>star</mat-icon>
+                        <mat-icon>star</mat-icon>
+                        <mat-icon>star_border</mat-icon>
+                        <!-- <mat-icon style="color:rgb(25, 51, 220) ;">bookmark_border</mat-icon> -->
+                    </div>
+                    <!-- Product price-->
+                    <p>{{product?.product?.price | currency}}</p>
+                    <p>Total Price: {{product?.totalPrice | currency}}</p>
+                    <p>Quantity: {{product.neededQuantity}} </p>
+                </div>
+            </div>
+            <!-- Product actions-->
+            <div class="text-center"><a class="btn btn-outline-dark mt-auto"
+                    [routerLink]="['/Products', product?.product?.id]">Edit Order</a></div>
+            <div
+                class="card-footer m-2 pt-0 border-top-0 bg-transparent d-flex align-items-center justify-content-center gap-2">
+                <div class="text-center"><a class="btn btn-outline-dark mt-auto"
+                        [routerLink]="['/Products', product?.product?.id]">View Details</a></div>
+                <div class="text-center"><a class="btn btn-outline-dark mt-auto"
+                        [routerLink]="['/Products', product?.product?.id]">Remove From Cart</a></div>
+            </div>
+
+        </div>
+    </div>
+</div>

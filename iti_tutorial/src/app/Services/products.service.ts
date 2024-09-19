@@ -56,16 +56,27 @@ export class ProductsService {
     );
   }
   editProduct(product: IProduct): Observable<IProduct> {
-    const url = `${environment.APIUrl}/${product.id}`;
-    return this.httpClient.put<IProduct>(url, product);
+    return this.httpClient.put<IProduct>(`${environment.APIUrl}/Products/${product.id}`, product, {
+      headers: this.httpOptions.headers,
+      observe: 'body'
+    }).pipe(
+      catchError(this.handleError)
+    );
   }
-  DeleteProduct(id: number) { }
+
+  DeleteProduct(id: number) {
+    const url = `${environment.APIUrl}/Products/${id}`;
+    return this.httpClient.delete(url, this.httpOptions).pipe(
+      retry(2), // Optionally retry if there's a failure
+      catchError(this.handleError) // Handle error
+    );
+  }
 
   getFourProductByCategoryID(cId: number): Observable<IProduct[]> {
     return this.httpClient.get<IProduct[]>(`${environment.APIUrl}/Products?categoryID=${cId}`)
-    .pipe(
-      map(products => products.slice(0, 4))
-    );
+      .pipe(
+        map(products => products.slice(0, 4))
+      );
   }
 
   private handleError(error: HttpErrorResponse) {

@@ -16,13 +16,14 @@ import { StaticProductService } from 'src/app/Services/static-product.service';
 import { Router } from '@angular/router';
 import { ProductsService } from 'src/app/Services/products.service';
 import { CartService } from 'src/app/Services/cart.service';
+import { FavouritesService } from 'src/app/Services/favourites.service';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss'],
 })
-export class ProductListComponent implements OnInit, OnChanges, AfterViewInit {
+export class ProductListComponent implements OnInit, OnChanges {
   orderTotalPrice: number = 0;
   product: any;
   // count:number=0;
@@ -38,7 +39,8 @@ export class ProductListComponent implements OnInit, OnChanges, AfterViewInit {
     private ProductService: ProductsService,
     private snackBar: MatSnackBar,
     private router: Router,
-    private cart: CartService
+    private cart: CartService,
+    private FavouritesService: FavouritesService
   ) {
     this.totalPriceChanged = new EventEmitter<number>();
     this.productToSend = new EventEmitter<ProductViewModel>();
@@ -51,7 +53,7 @@ export class ProductListComponent implements OnInit, OnChanges, AfterViewInit {
         this.sentSelectedCategoryID
       ).subscribe((products) => {
         this.productsByCategory = products;
-        console.log(products);
+        // console.log(products);
       });
     } else {
       this.ProductService.getAllProducts().subscribe((products) => {
@@ -65,10 +67,6 @@ export class ProductListComponent implements OnInit, OnChanges, AfterViewInit {
     this.ProductService.getAllProducts().subscribe((products) => {
       this.productsByCategory = products;
     });
-  }
-
-  ngAfterViewInit(): void {
-    // this.itemsCount.nativeElement.value = 0;
   }
 
   Buy(price: number, count: any, id: number, itemsCount: any) {
@@ -96,7 +94,7 @@ export class ProductListComponent implements OnInit, OnChanges, AfterViewInit {
           // this.totalPriceChanged.emit(this.orderTotalPrice);
           // this.productToSend.emit(productViewModel);
 
-          this.cart.addToCart(productViewModel);
+          // this.cart.addToCart(productViewModel);
 
         } else {
           this.InvalidQuantityNotification(product?.name || 'Product');
@@ -106,6 +104,24 @@ export class ProductListComponent implements OnInit, OnChanges, AfterViewInit {
     }
 
     itemsCount.value = '';
+  }
+
+  AddToFavourites(product: IProduct) {
+    this.FavouritesService.addToFavourites(product);
+    product.isFavorited = !product.isFavorited;
+    this.LoadProducts()
+  }
+
+  LoadProducts(): void {
+    this.ProductService.getAllProducts().subscribe({
+      next: (products) => {
+        this.productsByCategory = products
+      },
+      error: (error) => {
+        console.error('Error loading favorites:', error);
+      }
+    });
+
   }
 
   private showAddToCartNotification(productName: string) {

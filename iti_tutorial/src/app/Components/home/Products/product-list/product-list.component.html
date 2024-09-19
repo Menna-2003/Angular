@@ -27,7 +27,9 @@
           class="card-footer p-4 pt-0 border-top-0 bg-transparent d-flex align-items-center justify-content-center gap-2">
           <div class="text-center"><a class="btn btn-outline-dark mt-auto" [routerLink]="['/Products', product.id]">View
               Details</a></div>
-          <mat-icon>favorite_border</mat-icon>
+          <mat-icon (click)="AddToFavourites(product)" [ngClass]="product.isFavorited ? 'favorite' : 'favorite_border'">
+            {{ product.isFavorited ? 'favorite' : 'favorite_border' }}
+          </mat-icon>
         </div>
       </div>
     </div>

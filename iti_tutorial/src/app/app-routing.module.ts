@@ -11,6 +11,9 @@ import { AddProductComponent } from './Components/add-product/add-product.compon
 import { TestParameterService } from './Services/test-parameter.service';
 import { UserRegisterComponent } from './Components/user-register/user-register.component';
 import { OrderMasterComponent } from './Components/home/Products/order-master/order-master.component';
+import { FavouritesComponent } from './Components/home/Products/favourites/favourites.component';
+import { CartComponent } from './Components/cart/cart.component';
+import { ShopComponent } from './Components/home/Products/shop/shop.component';
 
 const routes: Routes = [
   {
@@ -19,10 +22,12 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: '/Home', pathMatch: 'full' },
       { path: 'Home', component: HomeComponent },
-      { path: 'Products', component: ProductListComponent },
+      { path: 'Shop', component: ShopComponent },
       { path: 'Products/Add', component: AddProductComponent },
       { path: 'Products/:pid', component: ProductDetailsComponent, canActivate: [TestParameterService] },
       { path: 'Order', component: OrderMasterComponent, canActivate: [AuthGuard] },
+      { path: 'Favourites', component: FavouritesComponent, canActivate: [AuthGuard] },
+      { path: 'Cart', component: CartComponent, canActivate: [AuthGuard] },
       {
         path: 'User',
         loadChildren: () => import('src/app/Components/user-module/user-module.module').then(m => m.UserModuleModule),

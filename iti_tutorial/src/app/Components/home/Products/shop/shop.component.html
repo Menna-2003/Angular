@@ -1,0 +1,32 @@
+<div class="Two-way-binding container m-5 d-flex align-items-center justify-content-center gap-3">
+    <div class="w-25">
+        <label for="category" class="form-label">Choose Category</label>
+        <div class="d-flex gap-3">
+            <!--& ngModel won't work unless 'FormsModule' is imported in app.module  -->
+            <select name="category" id="category" class="form-control w-100" [(ngModel)]="selectedCategoryid">
+                <option *ngFor="let category of categoryList" [value]="category.id">
+                    {{ category.name }}
+                </option>
+            </select>
+            <!-- <button class="btn btn-success" (click)="ResetCategories()">
+                    Reset Categories
+                </button> -->
+        </div>
+    </div>
+
+    <div class="d-flex align-items-center justify-content-center gap-3">
+        <div class="d-grid">
+            <label class="example-value-label">{{minPrice|currency}}</label>
+            <mat-slider id="minPrice" thumbLabel [displayWith]="formatLabel" tickInterval="1000" step="1000" min="0"
+                max="100000" aria-label="units" [(ngModel)]="minPrice"></mat-slider>
+        </div>
+
+        <div class="d-grid">
+            <label class="example-value-label">{{maxPrice|currency}}</label>
+            <mat-slider id="maxPrice" thumbLabel [displayWith]="formatLabel" tickInterval="1000" step="1000" min="0"
+                max="100000" aria-label="units" [(ngModel)]="maxPrice"></mat-slider>
+        </div>
+    </div>
+</div>
+
+<app-product-list [sentSelectedCategoryID]="selectedCategoryid"> </app-product-list>

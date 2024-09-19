@@ -18,6 +18,7 @@ export class EditProductComponent implements OnInit {
     imgURL: '',
     categoryID: 0,
     categoryName: '',
+    isFavorited: false
   };
 
   categoryList: ICategory[] = []

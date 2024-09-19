@@ -20,8 +20,8 @@ import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.co
   styleUrls: ['./order-master.component.scss'],
 })
 export class OrderMasterComponent implements OnInit {
-  selectedCategoryid: number = 0;
   categoryList: ICategory[];
+  selectedCategoryid: number = 0;
   receivedOrderTotalPrice: number = 0;
   receivedOrder: ProductViewModel;
   productViewModelList: ProductViewModel[] = [];
@@ -42,7 +42,7 @@ export class OrderMasterComponent implements OnInit {
     this.receivedOrder = { product: null, neededQuantity: 0, totalPrice: 0 };
   }
   ngOnInit(): void {
-    this.productViewModelList = this.cart.getCart()
+    // this.productViewModelList = this.cart.getCart()
   }
 
   ResetCategories() {

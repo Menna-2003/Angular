@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ProductViewModel } from '../ViewModels/product-view-model';
 import { IProduct } from '../Models/iproduct';
+import { environment } from 'src/environments/environment';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,32 +12,60 @@ export class CartService {
 
   cart: ProductViewModel[] = [];
   totalPrice: number = 0;
-  constructor() { }
+  snackBar: any;
+  httpOptions: any;
 
-  getCart() {
-    return this.cart;
+  constructor(private httpClient: HttpClient) {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+    };
+
+    this.httpClient.get<ProductViewModel[]>(`${environment.APIUrl}/Cart`).subscribe(c => {
+      this.cart = c;
+      console.log("this.cart", this.cart)
+    })
+
   }
 
-  addToCart(product: ProductViewModel) {
-    debugger;
-    console.log("cart", this.cart)
-    console.log("product", product)
+  getCart(): Observable<ProductViewModel[]> {
+    return this.httpClient.get<ProductViewModel[]>(`${environment.APIUrl}/Cart`);
+  }
 
-    let exist = this.cart.find(p => p.product?.id == product.product?.id);
-    console.log(exist);
-    if (exist) {
-      exist.neededQuantity = (exist.neededQuantity + product.neededQuantity) as number;
-      console.log("exist", exist.neededQuantity)
+  AddToCart(product: IProduct, neededQuantity: number) {
+    let exist = this.cart.find(p => p.product?.id == product?.id);
+
+    let TP = neededQuantity * product.price;
+    let productVM: ProductViewModel = {
+      product: product,
+      neededQuantity: neededQuantity,
+      totalPrice: TP
+    }
+
+    if (!exist) {
+      this.httpClient.post<ProductViewModel>(`${environment.APIUrl}/Cart`, productVM, this.httpOptions).subscribe({
+        next: (response) => {
+          console.log('Product added to Cart successfully', response);
+        },
+        error: (error) => {
+          console.error('Error adding product to cart', error);
+        }
+      });
+      console.log("productVM", productVM)
+      this.cart.push(productVM);
+      window.location.reload()
     }
     else {
-      this.cart.push(product);
+      // this.RemoveFromCart(productVM);
+      exist.neededQuantity = (exist.neededQuantity + neededQuantity) as number;
     }
 
   }
 
-  removeFromCart(productViewModel: ProductViewModel) {
+  RemoveFromCart(product: ProductViewModel) {
     this.cart = this.cart.filter(
-      (p) => p.product?.id != productViewModel.product?.id
+      (p) => p.product?.id != product.product?.id
     );
   }
 

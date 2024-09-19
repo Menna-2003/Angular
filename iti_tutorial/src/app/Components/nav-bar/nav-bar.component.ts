@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewInit, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { CartService } from 'src/app/Services/cart.service';
 import { UserAuthService } from 'src/app/Services/user-auth.service';
 
 @Component({
@@ -6,13 +7,27 @@ import { UserAuthService } from 'src/app/Services/user-auth.service';
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.scss']
 })
-export class NavBarComponent implements OnInit {
+export class NavBarComponent implements OnInit, OnChanges {
   isUserLogged: boolean = false;
+  cartItemsCount: number = 0;
 
-  constructor(private authService: UserAuthService) { }
+  constructor(private authService: UserAuthService, private CartService: CartService) {
+    this.isUserLogged = this.authService.isUserLogged;
+  }
+  
+  ngOnChanges(changes: SimpleChanges): void {
+    this.LoadCart()
+  }
 
   ngOnInit(): void {
-    this.isUserLogged = this.authService.isUserLogged;
+    this.LoadCart()
+  }
+
+  LoadCart() {
+    this.CartService.getCart().subscribe(c => {
+      this.cartItemsCount = c.length
+      console.log(this.cartItemsCount)
+    })
   }
 
   login() {

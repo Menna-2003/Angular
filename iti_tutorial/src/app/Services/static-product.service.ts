@@ -16,7 +16,9 @@ export class StaticProductService {
         quantity: 10,
         imgURL: 'image1.jpg',
         categoryID: 1,
-        categoryName: 'Laptops' // Add categoryName here
+        categoryName: 'Laptops', // Add categoryName here
+        isFavorited: false
+
       },
       {
         id: 1,
@@ -25,10 +27,12 @@ export class StaticProductService {
         quantity: 5,
         imgURL: 'image2.jpg',
         categoryID: 2,
-        categoryName: 'Mobiles' // Add categoryName here
+        categoryName: 'Mobiles', // Add categoryName here
+        isFavorited: false
+
       },
     ];
-    
+
   }
 
   getAllProducts(): IProduct[] {

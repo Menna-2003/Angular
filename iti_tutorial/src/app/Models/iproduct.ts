@@ -7,4 +7,5 @@ export interface IProduct {
     imgURL?: string;
     categoryID: number;
     categoryName: string;
+    isFavorited: boolean;
 }

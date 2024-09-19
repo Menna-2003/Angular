@@ -1,9 +1,15 @@
-.outOfStock td{
-    background-color:rgb(255, 232, 232);
+.outOfStock td {
+    background-color: rgb(255, 232, 232);
 }
-.warning td{
-    background-color:rgb(255, 255, 237);
+
+.warning td {
+    background-color: rgb(255, 255, 237);
 }
-img{
+
+img {
     transition: all 0.3s;
+}
+
+.favorite {
+    color: #4b4b4b;
 }
