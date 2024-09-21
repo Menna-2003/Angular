@@ -39,7 +39,7 @@ export class OrderMasterComponent implements OnInit {
       { id: 2, name: 'tablets', img: "", description: "" },
       { id: 3, name: 'mobiles', img: "", description: "" },
     ];
-    this.receivedOrder = { product: null, neededQuantity: 0, totalPrice: 0 };
+    this.receivedOrder = { id: 0, product: null, neededQuantity: 0, totalPrice: 0 };
   }
   ngOnInit(): void {
     // this.productViewModelList = this.cart.getCart()

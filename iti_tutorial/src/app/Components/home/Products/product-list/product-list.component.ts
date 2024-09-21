@@ -71,45 +71,58 @@ export class ProductListComponent implements OnInit, OnChanges {
 
   Buy(price: number, count: any, id: number, itemsCount: any) {
     // debugger;
-    let Quantity = Number(count)
-    let product = this.ProductService.getProductById(id);
+    // let Quantity = Number(count)
+    // let product = this.ProductService.getProductById(id);
 
-    let itemsCountt: number = Number(itemsCount);
+    // let itemsCountt: number = Number(itemsCount);
 
-    if (product) {
+    // if (product) {
 
-      product.subscribe(product => {
-        // itemsCountt <= product?.quantity &&
-        if (Quantity > 0) {
-          // this.showAddToCartNotification(product?.name || 'Product');
-          this.showAddToCartNotification('Product added successfully');
+    //   product.subscribe(product => {
+    //     // itemsCountt <= product?.quantity &&
+    //     if (Quantity > 0) {
+    //       // this.showAddToCartNotification(product?.name || 'Product');
+    //       this.showAddToCartNotification('Product added successfully');
 
-          // this.orderTotalPrice += Number(count) * price;
-          let productViewModel: ProductViewModel = {
-            product: product,
-            neededQuantity: Quantity,
-            totalPrice: this.orderTotalPrice,
-          };
+    //       // this.orderTotalPrice += Number(count) * price;
+    //       let productViewModel: ProductViewModel = {
+    //         product: product,
+    //         neededQuantity: Quantity,
+    //         totalPrice: this.orderTotalPrice,
+    //       };
 
-          // this.totalPriceChanged.emit(this.orderTotalPrice);
-          // this.productToSend.emit(productViewModel);
+    //       // this.totalPriceChanged.emit(this.orderTotalPrice);
+    //       // this.productToSend.emit(productViewModel);
 
-          // this.cart.addToCart(productViewModel);
+    //       // this.cart.addToCart(productViewModel);
 
-        } else {
-          this.InvalidQuantityNotification(product?.name || 'Product');
-        }
-      })
+    //     } else {
+    //       this.InvalidQuantityNotification(product?.name || 'Product');
+    //     }
+    //   })
 
-    }
+    // }
 
-    itemsCount.value = '';
+    // itemsCount.value = '';
   }
 
   AddToFavourites(product: IProduct) {
-    this.FavouritesService.addToFavourites(product);
     product.isFavorited = !product.isFavorited;
-    this.LoadProducts()
+
+    const observer = {
+      next: (product: IProduct) => {
+        console.log('Product Added Successfully!');
+        this.ProductService.editProduct(product).subscribe(p => { })
+      },
+      error: (err: Error) => {
+        alert(err.message);
+      },
+    };
+
+    this.FavouritesService.addToFavourites(product).subscribe(observer);
+    this.FavouritesService.getFavourites().subscribe(f => {
+      console.log(f)
+    })
   }
 
   LoadProducts(): void {
@@ -122,15 +135,6 @@ export class ProductListComponent implements OnInit, OnChanges {
       }
     });
 
-  }
-
-  private showAddToCartNotification(productName: string) {
-    this.snackBar.open(`${productName} has been added to the cart!`, 'Close', {
-      duration: 3000, // Duration in milliseconds
-      horizontalPosition: 'right',
-      verticalPosition: 'bottom',
-      panelClass: ['custom-snackbar'],
-    });
   }
 
   private InvalidQuantityNotification(productName: string) {

@@ -34,27 +34,33 @@ export class ProductsService {
     //~ optional
     // .pipe(retry(3), catchError(this.handleError));
   }
+ 
   getAllProducts(): Observable<IProduct[]> {
     return this.httpClient.get<IProduct[]>(`${environment.APIUrl}/Products`);
   }
+  
   getProductById(id: number): Observable<IProduct> {
     return this.httpClient.get<IProduct>(
       `${environment.APIUrl}/Products/${id}`
     );
   }
+  
   getCategoryById(id: number): Observable<ICategory> {
     return this.httpClient.get<ICategory>(
       `${environment.APIUrl}/categories/${id}`
     );
   }
+
   getCategories(): Observable<ICategory[]> {
     return this.httpClient.get<ICategory[]>(`${environment.APIUrl}/categories`);
   }
+
   getProductsByCategoryId(cId: number): Observable<IProduct[]> {
     return this.httpClient.get<IProduct[]>(
       `${environment.APIUrl}/Products?categoryID=${cId}`
     );
   }
+
   editProduct(product: IProduct): Observable<IProduct> {
     return this.httpClient.put<IProduct>(`${environment.APIUrl}/Products/${product.id}`, product, {
       headers: this.httpOptions.headers,

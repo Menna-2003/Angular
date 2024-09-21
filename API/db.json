@@ -27,27 +27,27 @@
   ],
   "Products": [
     {
-      "id": "5",
+      "id": "1",
       "name": "Acer Swift 3",
       "price": 54999,
       "quantity": 8,
       "imgURL": "https://images.pexels.com/photos/18105/pexels-photo.jpg",
       "categoryID": 1,
       "categoryName": "Laptops",
-      "isFavorited": true
+      "isFavorited": false
     },
     {
-      "id": "3",
+      "id": "2",
       "name": "Lenovo ThinkPad X1",
       "price": 84999,
       "quantity": 12,
       "imgURL": "https://images.pexels.com/photos/18105/pexels-photo.jpg",
       "categoryID": 1,
       "categoryName": "Laptops",
-      "isFavorited": true
+      "isFavorited": false
     },
     {
-      "id": "14",
+      "id": "3",
       "name": "Xiaomi Mi 13",
       "price": 45999,
       "quantity": 22,
@@ -57,216 +57,7 @@
       "isFavorited": false
     },
     {
-      "id": "11",
-      "name": "OnePlus 11",
-      "price": 56999,
-      "quantity": 18,
-      "imgURL": "https://images.pexels.com/photos/18525573/pexels-photo-18525573/free-photo-of-iphone-15-pro-max-box-in-natural-titanium-color-mention-zana_qaradaghy-on-instagram-while-use-this-photo-follow-on-instagram-zana_qaradaghy.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      "categoryID": 2,
-      "categoryName": "Smartphones",
-      "isFavorited": true
-    },
-    {
-      "id": "16",
-      "name": "iPad Pro 11",
-      "price": 79999,
-      "quantity": 6,
-      "imgURL": "https://images.pexels.com/photos/1251844/pexels-photo-1251844.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      "categoryID": 3,
-      "categoryName": "Tablets",
-      "isFavorited": false
-    },
-    {
-      "id": "9",
-      "name": "HP Envy 13",
-      "price": 84999,
-      "quantity": 9,
-      "imgURL": "https://images.pexels.com/photos/18105/pexels-photo.jpg",
-      "categoryID": 1,
-      "categoryName": "Laptops",
-      "isFavorited": true
-    },
-    {
-      "id": "0",
-      "name": "Dell XPS 13",
-      "price": 99999,
-      "quantity": 10,
-      "imgURL": "https://images.pexels.com/photos/18105/pexels-photo.jpg",
-      "categoryID": 1,
-      "categoryName": "Laptops",
-      "isFavorited": false
-    },
-    {
-      "id": "13",
-      "name": "iPhone 14 Pro",
-      "price": 129999,
-      "quantity": 10,
-      "imgURL": "https://images.pexels.com/photos/18525573/pexels-photo-18525573/free-photo-of-iphone-15-pro-max-box-in-natural-titanium-color-mention-zana_qaradaghy-on-instagram-while-use-this-photo-follow-on-instagram-zana_qaradaghy.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      "categoryID": 2,
-      "categoryName": "Smartphones",
-      "isFavorited": false
-    },
-    {
-      "id": "19",
-      "name": "Lenovo Tab P12",
-      "price": 54999,
-      "quantity": 15,
-      "imgURL": "https://images.pexels.com/photos/1251844/pexels-photo-1251844.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      "categoryID": 3,
-      "categoryName": "Tablets",
-      "isFavorited": false
-    },
-    {
-      "id": "18",
-      "name": "Microsoft Surface Pro 9",
-      "price": 129999,
-      "quantity": 7,
-      "imgURL": "https://images.pexels.com/photos/1251844/pexels-photo-1251844.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      "categoryID": 3,
-      "categoryName": "Tablets",
-      "isFavorited": false
-    },
-    {
-      "id": "15",
-      "name": "Sony Xperia 1 IV",
-      "price": 74999,
-      "quantity": 8,
-      "imgURL": "https://images.pexels.com/photos/18525573/pexels-photo-18525573/free-photo-of-iphone-15-pro-max-box-in-natural-titanium-color-mention-zana_qaradaghy-on-instagram-while-use-this-photo-follow-on-instagram-zana_qaradaghy.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      "categoryID": 2,
-      "categoryName": "Smartphones",
-      "isFavorited": false
-    },
-    {
-      "id": "17",
-      "name": "Samsung Galaxy Tab S8",
-      "price": 69999,
-      "quantity": 12,
-      "imgURL": "https://images.pexels.com/photos/1251844/pexels-photo-1251844.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      "categoryID": 3,
-      "categoryName": "Tablets",
-      "isFavorited": false
-    },
-    {
-      "id": "12",
-      "name": "Google Pixel 8",
-      "price": 64999,
-      "quantity": 14,
-      "imgURL": "https://images.pexels.com/photos/18525573/pexels-photo-18525573/free-photo-of-iphone-15-pro-max-box-in-natural-titanium-color-mention-zana_qaradaghy-on-instagram-while-use-this-photo-follow-on-instagram-zana_qaradaghy.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      "categoryID": 2,
-      "categoryName": "Smartphones",
-      "isFavorited": false
-    },
-    {
       "id": "4",
-      "name": "Asus ZenBook 14",
-      "price": 74999,
-      "quantity": 15,
-      "imgURL": "https://images.pexels.com/photos/18105/pexels-photo.jpg",
-      "categoryID": 1,
-      "categoryName": "Laptops",
-      "isFavorited": false
-    },
-    {
-      "id": "10",
-      "name": "Samsung Galaxy S23",
-      "price": 49999,
-      "quantity": 20,
-      "imgURL": "https://images.pexels.com/photos/18525573/pexels-photo-18525573/free-photo-of-iphone-15-pro-max-box-in-natural-titanium-color-mention-zana_qaradaghy-on-instagram-while-use-this-photo-follow-on-instagram-zana_qaradaghy.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      "categoryID": 2,
-      "categoryName": "Smartphones",
-      "isFavorited": false
-    },
-    {
-      "id": "8",
-      "name": "Dell Inspiron 15",
-      "price": 69999,
-      "quantity": 11,
-      "imgURL": "https://images.pexels.com/photos/18105/pexels-photo.jpg",
-      "categoryID": 1,
-      "categoryName": "Laptops",
-      "isFavorited": false
-    },
-    {
-      "id": "7",
-      "name": "Razer Blade 15",
-      "price": 149999,
-      "quantity": 4,
-      "imgURL": "https://images.pexels.com/photos/18105/pexels-photo.jpg",
-      "categoryID": 1,
-      "categoryName": "Laptops",
-      "isFavorited": false
-    },
-    {
-      "id": "6",
-      "name": "Microsoft Surface Laptop 4",
-      "price": 89999,
-      "quantity": 6,
-      "imgURL": "https://images.pexels.com/photos/18105/pexels-photo.jpg",
-      "categoryID": 1,
-      "categoryName": "Laptops",
-      "isFavorited": false
-    },
-    {
-      "id": "20",
-      "name": "Huawei MatePad Pro",
-      "price": 64999,
-      "quantity": 11,
-      "imgURL": "https://images.pexels.com/photos/1251844/pexels-photo-1251844.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      "categoryID": 3,
-      "categoryName": "Tablets",
-      "isFavorited": false
-    },
-    {
-      "id": "2",
-      "name": "HP Spectre x360",
-      "price": 109999,
-      "quantity": 7,
-      "imgURL": "https://images.pexels.com/photos/18105/pexels-photo.jpg",
-      "categoryID": 1,
-      "categoryName": "Laptops",
-      "isFavorited": false
-    },
-    {
-      "id": "1",
-      "name": "MacBook Air M2",
-      "price": 129999,
-      "quantity": 5,
-      "imgURL": "https://images.pexels.com/photos/18105/pexels-photo.jpg",
-      "categoryID": 1,
-      "categoryName": "Laptops",
-      "isFavorited": false
-    }
-  ],
-  "Cart": [
-    {
-      "id": "3fbd",
-      "product": {
-        "id": "3",
-        "name": "Lenovo ThinkPad X1",
-        "price": 84999,
-        "quantity": 12,
-        "imgURL": "https://images.pexels.com/photos/18105/pexels-photo.jpg",
-        "categoryID": 1,
-        "categoryName": "Laptops",
-        "isFavorited": true
-      },
-      "neededQuantity": 5,
-      "totalPrice": 424995
-    }
-  ],
-  "Favourites": [
-    {
-      "id": "3",
-      "name": "Lenovo ThinkPad X1",
-      "price": 84999,
-      "quantity": 12,
-      "imgURL": "https://images.pexels.com/photos/18105/pexels-photo.jpg",
-      "categoryID": 1,
-      "categoryName": "Laptops",
-      "isFavorited": false
-    },
-    {
-      "id": "11",
       "name": "OnePlus 11",
       "price": 56999,
       "quantity": 18,
@@ -277,18 +68,176 @@
     },
     {
       "id": "5",
-      "name": "Acer Swift 3",
+      "name": "iPad Pro 11",
+      "price": 79999,
+      "quantity": 6,
+      "imgURL": "https://images.pexels.com/photos/1251844/pexels-photo-1251844.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "categoryID": 3,
+      "categoryName": "Tablets",
+      "isFavorited": false
+    },
+    {
+      "id": "6",
+      "name": "HP Envy 13",
+      "price": 84999,
+      "quantity": 9,
+      "imgURL": "https://images.pexels.com/photos/18105/pexels-photo.jpg",
+      "categoryID": 1,
+      "categoryName": "Laptops",
+      "isFavorited": false
+    },
+    {
+      "id": "7",
+      "name": "Dell XPS 13",
+      "price": 99999,
+      "quantity": 10,
+      "imgURL": "https://images.pexels.com/photos/18105/pexels-photo.jpg",
+      "categoryID": 1,
+      "categoryName": "Laptops",
+      "isFavorited": false
+    },
+    {
+      "id": "8",
+      "name": "iPhone 14 Pro",
+      "price": 129999,
+      "quantity": 10,
+      "imgURL": "https://images.pexels.com/photos/18525573/pexels-photo-18525573/free-photo-of-iphone-15-pro-max-box-in-natural-titanium-color-mention-zana_qaradaghy-on-instagram-while-use-this-photo-follow-on-instagram-zana_qaradaghy.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "categoryID": 2,
+      "categoryName": "Smartphones",
+      "isFavorited": false
+    },
+    {
+      "id": "9",
+      "name": "Lenovo Tab P12",
       "price": 54999,
+      "quantity": 15,
+      "imgURL": "https://images.pexels.com/photos/1251844/pexels-photo-1251844.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "categoryID": 3,
+      "categoryName": "Tablets",
+      "isFavorited": false
+    },
+    {
+      "id": "10",
+      "name": "Microsoft Surface Pro 9",
+      "price": 129999,
+      "quantity": 7,
+      "imgURL": "https://images.pexels.com/photos/1251844/pexels-photo-1251844.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "categoryID": 3,
+      "categoryName": "Tablets",
+      "isFavorited": false
+    },
+    {
+      "id": "11",
+      "name": "Sony Xperia 1 IV",
+      "price": 74999,
       "quantity": 8,
+      "imgURL": "https://images.pexels.com/photos/18525573/pexels-photo-18525573/free-photo-of-iphone-15-pro-max-box-in-natural-titanium-color-mention-zana_qaradaghy-on-instagram-while-use-this-photo-follow-on-instagram-zana_qaradaghy.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "categoryID": 2,
+      "categoryName": "Smartphones",
+      "isFavorited": false
+    },
+    {
+      "id": "12",
+      "name": "Samsung Galaxy Tab S8",
+      "price": 69999,
+      "quantity": 12,
+      "imgURL": "https://images.pexels.com/photos/1251844/pexels-photo-1251844.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "categoryID": 3,
+      "categoryName": "Tablets",
+      "isFavorited": false
+    },
+    {
+      "id": "13",
+      "name": "Google Pixel 8",
+      "price": 64999,
+      "quantity": 14,
+      "imgURL": "https://images.pexels.com/photos/18525573/pexels-photo-18525573/free-photo-of-iphone-15-pro-max-box-in-natural-titanium-color-mention-zana_qaradaghy-on-instagram-while-use-this-photo-follow-on-instagram-zana_qaradaghy.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "categoryID": 2,
+      "categoryName": "Smartphones",
+      "isFavorited": false
+    },
+    {
+      "id": "14",
+      "name": "Asus ZenBook 14",
+      "price": 74999,
+      "quantity": 15,
+      "imgURL": "https://images.pexels.com/photos/18105/pexels-photo.jpg",
+      "categoryID": 1,
+      "categoryName": "Laptops",
+      "isFavorited": false
+    },
+    {
+      "id": "15",
+      "name": "Samsung Galaxy S23",
+      "price": 49999,
+      "quantity": 20,
+      "imgURL": "https://images.pexels.com/photos/18525573/pexels-photo-18525573/free-photo-of-iphone-15-pro-max-box-in-natural-titanium-color-mention-zana_qaradaghy-on-instagram-while-use-this-photo-follow-on-instagram-zana_qaradaghy.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "categoryID": 2,
+      "categoryName": "Smartphones",
+      "isFavorited": false
+    },
+    {
+      "id": "16",
+      "name": "Dell Inspiron 15",
+      "price": 69999,
+      "quantity": 11,
+      "imgURL": "https://images.pexels.com/photos/18105/pexels-photo.jpg",
+      "categoryID": 1,
+      "categoryName": "Laptops",
+      "isFavorited": false
+    },
+    {
+      "id": "17",
+      "name": "Razer Blade 15",
+      "price": 149999,
+      "quantity": 4,
+      "imgURL": "https://images.pexels.com/photos/18105/pexels-photo.jpg",
+      "categoryID": 1,
+      "categoryName": "Laptops",
+      "isFavorited": false
+    },
+    {
+      "id": "18",
+      "name": "Microsoft Surface Laptop 4",
+      "price": 89999,
+      "quantity": 6,
+      "imgURL": "https://images.pexels.com/photos/18105/pexels-photo.jpg",
+      "categoryID": 1,
+      "categoryName": "Laptops",
+      "isFavorited": false
+    },
+    {
+      "id": "19",
+      "name": "Huawei MatePad Pro",
+      "price": 64999,
+      "quantity": 11,
+      "imgURL": "https://images.pexels.com/photos/1251844/pexels-photo-1251844.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "categoryID": 3,
+      "categoryName": "Tablets",
+      "isFavorited": false
+    },
+    {
+      "id": "20",
+      "name": "HP Spectre x360",
+      "price": 109999,
+      "quantity": 7,
+      "imgURL": "https://images.pexels.com/photos/18105/pexels-photo.jpg",
+      "categoryID": 1,
+      "categoryName": "Laptops",
+      "isFavorited": false
+    },
+    {
+      "id": "21",
+      "name": "MacBook Air M2",
+      "price": 129999,
+      "quantity": 5,
       "imgURL": "https://images.pexels.com/photos/18105/pexels-photo.jpg",
       "categoryID": 1,
       "categoryName": "Laptops",
       "isFavorited": false
     }
   ],
-  "Users": [
-    {
-      
-    }
-  ]
+  "Cart": [],
+  "Favourites": [],
+  "Users": []
 }

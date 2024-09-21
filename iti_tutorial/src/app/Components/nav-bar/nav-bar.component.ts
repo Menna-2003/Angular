@@ -14,7 +14,7 @@ export class NavBarComponent implements OnInit, OnChanges {
   constructor(private authService: UserAuthService, private CartService: CartService) {
     this.isUserLogged = this.authService.isUserLogged;
   }
-  
+
   ngOnChanges(changes: SimpleChanges): void {
     this.LoadCart()
   }
@@ -26,7 +26,7 @@ export class NavBarComponent implements OnInit, OnChanges {
   LoadCart() {
     this.CartService.getCart().subscribe(c => {
       this.cartItemsCount = c.length
-      console.log(this.cartItemsCount)
+      console.log("Cart Items Count: ", this.cartItemsCount)
     })
   }
 

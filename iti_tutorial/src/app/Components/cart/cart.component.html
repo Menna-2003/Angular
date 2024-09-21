@@ -25,14 +25,14 @@
                 </div>
             </div>
             <!-- Product actions-->
-            <div class="text-center"><a class="btn btn-outline-dark mt-auto"
-                    [routerLink]="['/Products', product?.product?.id]">Edit Order</a></div>
+            <button class="text-center border-0 bg-transparent"><a class="btn btn-outline-dark mt-auto"
+                    [routerLink]="['/Products', product?.product?.id]">Edit Order</a></button>
             <div
                 class="card-footer m-2 pt-0 border-top-0 bg-transparent d-flex align-items-center justify-content-center gap-2">
-                <div class="text-center"><a class="btn btn-outline-dark mt-auto"
-                        [routerLink]="['/Products', product?.product?.id]">View Details</a></div>
-                <div class="text-center"><a class="btn btn-outline-dark mt-auto"
-                        [routerLink]="['/Products', product?.product?.id]">Remove From Cart</a></div>
+                <button class="text-center border-0 bg-transparent"><a class="btn btn-outline-dark mt-auto"
+                        [routerLink]="['/Products', product?.product?.id]">View Details</a></button>
+                <button class="text-center btn btn-outline-dark" (click)="RemoveProduct(product)">Remove From
+                    Cart</button>
             </div>
 
         </div>

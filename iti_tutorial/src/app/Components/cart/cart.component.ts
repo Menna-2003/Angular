@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
 import { CartService } from 'src/app/Services/cart.service';
 import { ProductsService } from 'src/app/Services/products.service';
@@ -12,10 +13,9 @@ import { ProductViewModel } from 'src/app/ViewModels/product-view-model';
 export class CartComponent implements OnInit {
 
   Cart: ProductViewModel[] = []
-  dialog: any;
   snackBar: any;
 
-  constructor(private cartService: CartService, private productService: ProductsService) { }
+  constructor(private cartService: CartService, private productService: ProductsService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.cartService.getCart().subscribe(c => {
@@ -23,20 +23,27 @@ export class CartComponent implements OnInit {
     })
   }
 
-  // AddToCart(product: ProductViewModel) {
-  //   this.Cart.push(product);
-  // }
+  RemoveProduct(product: ProductViewModel) {
 
-  // DeleteFromCart(productViewModel: ProductViewModel) {
-  //   console.log(this.Cart);
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '250px',
+      data: { message: "Are you sure you want to remove this product?" }
+    });
 
-  //   this.Cart = this.Cart.filter(
-  //     (p) => p.product?.id != productViewModel.product?.id
-  //   );
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.cartService.RemoveFromCart(product).subscribe(() => {
+          this.cartService.getCart().subscribe(c => {
+            this.Cart = c;
+          })
+        })
+      } else {
+        console.log('Order canceled');
+      }
+    });
 
-  //   console.log(this.Cart);
-  // }
 
+  }
 
   // PlaceOrder() {
   //   const dialogRef = this.dialog.open(ConfirmDialogComponent);

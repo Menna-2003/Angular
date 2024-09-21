@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IProduct } from 'src/app/Models/iproduct';
 import { CartService } from 'src/app/Services/cart.service';
@@ -22,71 +23,30 @@ export class ProductDetailsComponent implements OnInit {
   product: IProduct = {} as IProduct;
   neededQuantity: number = 0;
   productVM: ProductViewModel = {} as ProductViewModel
-  // productIdsList: number[] = [];
   ProductList: IProduct[] = [];
+  // productIdsList: number[] = [];
 
   QuantityForm: FormGroup;
-  snackBar: any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private ProductService: ProductsService,
     private CartService: CartService,
-    private router: Router,
-    private location: Location,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
   ) {
     this.QuantityForm = this.formBuilder.group({
-      quantity: [1, [Validators.required, Validators.min(1)]], // Initialize with default value and validations
+      quantity: [1, [Validators.required, Validators.min(1)]],
     });
 
   }
+
   get Quantity() {
     return this.QuantityForm.get('quantity');
-  }
-
-  addProductToCart() {
-
-    // this.productVM.product = this.product
-    // this.productVM.neededQuantity = this.neededQuantity
-    // this.productVM.totalPrice = this.neededQuantity * this.product.price
-
-    // console.log(this.productVM.product)
-    // console.log(this.productVM.neededQuantity)
-    // console.log(this.productVM.totalPrice) 
-
-    const quantity = this.QuantityForm.value.quantity;
-    console.log(quantity)
-    this.CartService.AddToCart(this.product, quantity)
-
-    // let userModel: IUser = this.userRegisterForm.value as IUser
-
-    // call API, and send user data
-    // console.log(userModel)
-  }
-
-  private AddToCartsNotification() {
-    this.snackBar.open(`Product has been added successfully!`, 'Close', {
-      duration: 3000, // Duration in milliseconds
-      horizontalPosition: 'right',
-      verticalPosition: 'bottom',
-      panelClass: ['AddedToFav'],
-    });
-  }
-  private RemovedFromCartNotification() {
-    this.snackBar.open(`Product removed from favourites!`, 'Close', {
-      duration: 3000, // Duration in milliseconds
-      horizontalPosition: 'right',
-      verticalPosition: 'bottom',
-      panelClass: ['RemovedFromFav'],
-    });
   }
 
   ngOnInit(): void {
     //~ Usage of snapshot: This code uses the snapshot property of ActivatedRoute to access the route parameter pid.
     //~ Synchronous Access: It retrieves the parameter once when the component is initialized and does not listen for any changes. It assumes that the parameter will not change during the component's lifecycle.
-
-
 
     // this.CurrentProductId = Number(this.activatedRoute.snapshot.paramMap.get('pid'));
     // this.ProductService.getProductById(this.CurrentProductId).subscribe((product) => {
@@ -105,6 +65,8 @@ export class ProductDetailsComponent implements OnInit {
       this.CurrentProductId = Number(paramMap.get('pid'));
       this.ProductService.getProductById(this.CurrentProductId).subscribe((product) => {
         this.product = product;
+        this.productVM.id = this.product.id;
+        this.productVM.product = this.product;
         this.CurrentProductCategoryId = product.categoryID;
 
         // Now that we have the correct category ID, fetch the related products
@@ -117,6 +79,47 @@ export class ProductDetailsComponent implements OnInit {
     // this.productIdsList = this.staticProductService.getProductIds();
   }
 
+  addProductToCart() {
+
+    this.CartService.getProductById(this.productVM.id).subscribe({
+      next: (p) => {
+        if (p) {
+          this.productVM.id = this.product.id;
+          this.productVM.product = this.product;
+          this.productVM.neededQuantity = p.neededQuantity;
+          this.productVM.neededQuantity += this.QuantityForm.value.quantity;
+          this.productVM.totalPrice = this.productVM.neededQuantity * this.product.price;
+          this.CartService.UpdateProductQuantity(this.productVM).subscribe({
+            next: (updatedProduct) => {
+              console.log("Updated Product: ", updatedProduct);
+            },
+            error: (err) => {
+              console.error("Error updating product quantity: ", err);
+            }
+          });
+        }
+      },
+      error: (err) => {
+        if (err.status === 404) {
+          this.productVM.id = this.product.id;
+          this.productVM.product = this.product;
+          this.productVM.neededQuantity = this.QuantityForm.value.quantity;
+          this.productVM.totalPrice = this.QuantityForm.value.quantity * this.product.price;
+
+          this.CartService.AddToCart(this.productVM).subscribe(newProduct => {
+            console.log("Added Product: ", newProduct);
+          });
+        } else {
+          // Handle other errors
+          console.error("Error fetching product: ", err);
+        }
+      }
+    });
+
+    // let userModel: IUser = this.userRegisterForm.value as IUser
+    // call API, and send user data
+    // console.log(userModel)
+  }
 
   onActivate($event: any) {
     window.scroll({
@@ -125,10 +128,9 @@ export class ProductDetailsComponent implements OnInit {
       behavior: 'smooth'
     });
   }
-
-  GoBack() {
-    this.location.back();
-  }
+  // GoBack() {
+  //   this.location.back();
+  // }
   // Previous() {
   //   let currentIndex = this.productIdsList.findIndex(
   //     (e) => e == this.CurrentProductId
