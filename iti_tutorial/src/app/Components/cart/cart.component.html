@@ -1,4 +1,54 @@
-<div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-xl-3 justify-content-center mt-5"
+<div class="container-fluid py-4">
+    <h1 class="m-5">Cart</h1>
+    <h3 *ngIf="Cart.length == 0" class="text-center text-danger">There is no tours booked</h3>
+
+    <div *ngFor="let product of Cart; let i = index">
+
+        <div class="card mb-3 custom-card">
+            <div class="row gap-3 g-0 align-items-center">
+                <div class="col-md-3">
+                    <img [src]="product?.product?.imgURL" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-5">
+                    <div class="card-body">
+                        <h1 class="card-title">{{product?.product?.name}}</h1>
+                        <p class="card-text">{{product?.product?.price | currency}}</p>
+                        <p class="card-text">Total Price: {{product?.totalPrice | currency}}</p>
+                        <p class="card-text">Quantity: {{product.neededQuantity}} </p>
+                        <!-- <p class="card-text">Status: <span style="color: #3771c2; font-weight:bolder"> in progress
+                            </span>
+                        </p> -->
+
+                        <!-- <p class="card-text">Status: <span class="text-danger"> Finished </span> </p> -->
+
+                    </div>
+                </div>
+                <div class="col-md-2 d-grid gap-2 justify-content-end pe-3 pb-3">
+                    <button class="text-center border-0 bg-transparent"><a class="btn btn-secondary mt-auto"
+                            style="width: 200px;" [routerLink]="['/Products', product?.product?.id]">Edit
+                            Order</a></button>
+                    <button class="text-center border-0 bg-transparent"><a class="btn mt-auto"
+                            style="width: 200px; background-color: #3771c2; color: #fff;"
+                            [routerLink]="['/Products', product?.product?.id]">View Details</a></button>
+                    <button class="text-center btn btn-danger mt-auto" style="width: 200px;"
+                        (click)="RemoveProduct(product)">Remove From
+                        Cart</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container text-end mb-2">
+        <a asp-action="CheckOut" asp-controller="Home" class="btn me-2" style="background-color:#3771c2; color:#fff"
+            role="button">
+            <span class="material-symbols-outlined">Checkout</span>
+        </a>
+    </div>
+</div>
+
+
+<div *ngIf="false" class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-xl-3 justify-content-center mt-5"
     style="min-height: 60vb;">
     <div class="col mb-5" *ngFor="let product of Cart; let i = index">
         <div class="card h-100">

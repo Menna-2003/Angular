@@ -54,7 +54,7 @@
       "imgURL": "https://images.pexels.com/photos/18525573/pexels-photo-18525573/free-photo-of-iphone-15-pro-max-box-in-natural-titanium-color-mention-zana_qaradaghy-on-instagram-while-use-this-photo-follow-on-instagram-zana_qaradaghy.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       "categoryID": 2,
       "categoryName": "Smartphones",
-      "isFavorited": false
+      "isFavorited": true
     },
     {
       "id": "4",
@@ -237,7 +237,115 @@
       "isFavorited": false
     }
   ],
-  "Cart": [],
-  "Favourites": [],
-  "Users": []
+  "Cart": [
+    {
+      "id": "2",
+      "product": {
+        "id": "2",
+        "name": "Lenovo ThinkPad X1",
+        "price": 84999,
+        "quantity": 12,
+        "imgURL": "https://images.pexels.com/photos/18105/pexels-photo.jpg",
+        "categoryID": 1,
+        "categoryName": "Laptops",
+        "isFavorited": false
+      },
+      "neededQuantity": 4,
+      "totalPrice": 339996
+    }
+  ],
+  "Favourites": [
+    {
+      "id": "3",
+      "name": "Xiaomi Mi 13",
+      "price": 45999,
+      "quantity": 22,
+      "imgURL": "https://images.pexels.com/photos/18525573/pexels-photo-18525573/free-photo-of-iphone-15-pro-max-box-in-natural-titanium-color-mention-zana_qaradaghy-on-instagram-while-use-this-photo-follow-on-instagram-zana_qaradaghy.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "categoryID": 2,
+      "categoryName": "Smartphones",
+      "isFavorited": true
+    }
+  ],
+  "Users": [
+    {
+      "id": "men123",
+      "fullname": "menna",
+      "email": "menna@g",
+      "phoneNumber": [
+        "123456789"
+      ],
+      "password": "123",
+      "confirmPassword": "123",
+      "address": {
+        "city": "cairo",
+        "postalCode": 123,
+        "country": "Egypt"
+      },
+      "referral": "friends",
+      "referralOther": "",
+      "role": "User",
+      "admincode": "",
+      "token": "men123"
+    },
+    {
+      "id": "cus456",
+      "fullname": "menna",
+      "email": "cust@gm",
+      "phoneNumber": [
+        "123456789"
+      ],
+      "password": "456",
+      "confirmPassword": "456",
+      "address": {
+        "city": "jhio",
+        "postalCode": 456,
+        "country": "joiij"
+      },
+      "referral": "socialMedia",
+      "referralOther": "",
+      "role": "User",
+      "admincode": "",
+      "token": "cus456"
+    },
+    {
+      "id": "sam123",
+      "fullname": "sama",
+      "email": "sama@g",
+      "phoneNumber": [
+        "010165"
+      ],
+      "password": "123",
+      "confirmPassword": "123",
+      "address": {
+        "city": "cairo",
+        "postalCode": 123,
+        "country": "Egypt"
+      },
+      "referral": "socialMedia",
+      "referralOther": "",
+      "role": "User",
+      "admincode": "",
+      "token": "sam123"
+    },
+    {
+      "id": "oma123",
+      "fullname": "omar",
+      "email": "omar@g",
+      "phoneNumber": [
+        "010546546"
+      ],
+      "password": "123",
+      "confirmPassword": "123",
+      "address": {
+        "city": "cairo",
+        "postalCode": 123,
+        "country": "Egypt"
+      },
+      "referral": "socialMedia",
+      "referralOther": "",
+      "role": "User",
+      "admincode": "",
+      "token": "oma123"
+    }
+  ]
 }

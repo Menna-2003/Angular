@@ -1,4 +1,6 @@
 export interface IUser {
+    id: string;
+    token: string;
     fullname: string;
     email: string;
     password: string;
@@ -6,6 +8,7 @@ export interface IUser {
     address: {
         city: string;
         postalCode: string;
-        street: string;
+        country: string;
     }
+    Role: string;
 }

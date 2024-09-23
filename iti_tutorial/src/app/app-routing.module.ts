@@ -28,9 +28,10 @@ const routes: Routes = [
       { path: 'Order', component: OrderMasterComponent, canActivate: [AuthGuard] },
       { path: 'Favourites', component: FavouritesComponent, canActivate: [AuthGuard] },
       { path: 'Cart', component: CartComponent, canActivate: [AuthGuard] },
+      { path: 'Shop/:categoryId', component: ShopComponent },
       {
         path: 'User',
-        loadChildren: () => import('src/app/Components/user-module/user-module.module').then(m => m.UserModuleModule),
+        loadChildren: () => import('src/app/Components/user/user.module').then(m => m.UserModule),
         canActivate: [AuthGuard]
       },
       {

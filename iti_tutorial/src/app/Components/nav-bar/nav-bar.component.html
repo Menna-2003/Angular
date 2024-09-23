@@ -1,7 +1,7 @@
 <!-- Navigation-->
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: black;">
-    <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="#!"><img src="assets/images/logo.png" alt=""></a>
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container px-3 px-lg-4">
+        <a class="navbar-brand" routerLink="/Home"><img src="assets/images/logo.png" alt="" width="100px"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
                 class="navbar-toggler-icon"></span></button>
@@ -30,15 +30,15 @@
             </ul>
             <form class="d-flex gap-2">
                 <ng-container *ngIf="!isUserLogged">
-                    <li (click)="login()" class="d-flex align-items-center" style="cursor: pointer;"><a
-                            class="nav-item nav-link text-light" routerLinkActive="active">Login</a>
+                    <li class="d-flex align-items-center" routerLink="/Login" style="cursor: pointer;"><a
+                            class="nav-item nav-link text-dark" routerLinkActive="active">Login</a>
                     </li>
-                    <li class="d-flex align-items-center"><a class="nav-item nav-link text-light" routerLink="/Register"
+                    <li class="d-flex align-items-center"><a class="nav-item nav-link text-dark" routerLink="/Register"
                             routerLinkActive="active">Register</a></li>
                 </ng-container>
 
                 <ng-container *ngIf="isUserLogged">
-                    <li class="nav-item dropdown text-light">
+                    <li class="nav-item dropdown text-dark">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">Profile</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -55,15 +55,15 @@
 
 
                     <a routerLink="/Cart" style=" text-decoration: none;">
-                        <button class="btn btn-outline-light d-flex align-items-center justify-content-center gap-2"
+                        <button class="btn btn-outline-dark d-flex align-items-center justify-content-center gap-2"
                             type="submit">
                             <mat-icon>shopping_cart</mat-icon>
                             Cart
-                            <span class="badge bg-light text-dark ms-1 rounded-pill">{{cartItemsCount}}</span>
+                            <span class="badge bg-dark text-light ms-1 rounded-pill">{{cartItemsCount}}</span>
                         </button>
                     </a>
                     <a routerLink="/Favourites" style="text-decoration: none;">
-                        <button class="btn btn-outline-light d-flex align-items-center justify-content-center gap-2"
+                        <button class="btn btn-outline-dark d-flex align-items-center justify-content-center gap-2"
                             type="submit">
                             <mat-icon>favorite</mat-icon> Favourites
                         </button>

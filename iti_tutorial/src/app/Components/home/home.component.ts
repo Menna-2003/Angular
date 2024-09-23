@@ -45,11 +45,12 @@ export class HomeComponent implements OnInit {
     // this.promotionAds.getScheduledAds(3).subscribe(observer);
   }
 
-  ViewProductsByCategory(cId: number) {
-    this.selectedCategoryid = cId;
-    // this.router.navigate(['/Products'], { queryParams: { categoryID: cId } });
 
+  selectCategory(categoryId: number) {
+    this.selectedCategoryid = categoryId;
+    this.router.navigate(['/Shop', categoryId]);
   }
+
 
   // ToggleImage() {
   //   this.isImageShown = !this.isImageShown;

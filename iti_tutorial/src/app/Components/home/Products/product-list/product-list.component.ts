@@ -13,7 +13,7 @@ import { IProduct } from 'src/app/Models/iproduct';
 import { ProductViewModel } from 'src/app/ViewModels/product-view-model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { StaticProductService } from 'src/app/Services/static-product.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from 'src/app/Services/products.service';
 import { CartService } from 'src/app/Services/cart.service';
 import { FavouritesService } from 'src/app/Services/favourites.service';
@@ -30,6 +30,8 @@ export class ProductListComponent implements OnInit, OnChanges {
   productsByCategory: IProduct[] = [];
 
   @Input() sentSelectedCategoryID: number = 0;
+  @Input() minPrice: number = 0;
+  @Input() maxPrice: number = 0;
   @Output() totalPriceChanged: EventEmitter<number>;
   @Output() productToSend: EventEmitter<ProductViewModel>;
   @ViewChild('itemsCount') itemsCount!: ElementRef;
@@ -39,25 +41,62 @@ export class ProductListComponent implements OnInit, OnChanges {
     private ProductService: ProductsService,
     private snackBar: MatSnackBar,
     private router: Router,
+    private route: ActivatedRoute,
     private cart: CartService,
     private FavouritesService: FavouritesService
   ) {
     this.totalPriceChanged = new EventEmitter<number>();
     this.productToSend = new EventEmitter<ProductViewModel>();
+
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('categoryId');
+      if (id) {
+        this.sentSelectedCategoryID = +id;
+      }
+    });
   }
 
   ngOnChanges(): void {
-    // this.productsByCategory = this.staticProductService.getProductsByCategoryId( this.sentSelectedCategoryID);
-    if (this.sentSelectedCategoryID != 0) {
-      this.ProductService.getProductsByCategoryId(
-        this.sentSelectedCategoryID
-      ).subscribe((products) => {
-        this.productsByCategory = products;
-        // console.log(products);
-      });
-    } else {
+    if (this.maxPrice != 0 && this.maxPrice > this.minPrice) {
+      if (this.sentSelectedCategoryID == 0) {
+        this.ProductService.getAllProducts().subscribe((products) => {
+          let p = products.filter(p => p.price > this.minPrice && p.price < this.maxPrice);
+          if (p.length > 0)
+            this.productsByCategory = p;
+          else {
+            this.NoProductsFoundNotification("No Products Found, Try other filters")
+            this.ProductService.getAllProducts().subscribe((products) => {
+              this.productsByCategory = products;
+              console.log("max", this.maxPrice, " min", this.minPrice)
+              if (this.maxPrice == 0) this.maxPriceNotification("You must specify maximum price for the filtration!");
+              if (this.maxPrice < this.minPrice) this.minMax("Maximum price should be larger than minimum price");
+            });
+          }
+        });
+      }
+      else {
+        this.ProductService.getProductsByCategoryId(this.sentSelectedCategoryID).subscribe((products) => {
+          let p = products.filter(p => p.price > this.minPrice && p.price < this.maxPrice);
+          if (p.length > 0) {
+            this.productsByCategory = p
+          }
+          else {
+            this.NoProductsFoundNotification("No Products Found, Try other filters")
+            this.ProductService.getAllProducts().subscribe((products) => {
+              this.productsByCategory = products;
+              console.log("max", this.maxPrice, " min", this.minPrice)
+              if (this.maxPrice == 0) this.maxPriceNotification("You must specify maximum price for the filtration!");
+              if (this.maxPrice < this.minPrice) this.minMax("Maximum price should be larger than minimum price");
+            });
+          }
+        });
+      }
+    }
+    else {
       this.ProductService.getAllProducts().subscribe((products) => {
         this.productsByCategory = products;
+        // if (this.maxPrice == 0) this.maxPriceNotification("You must specify maximum price for the filtration!");
+        if (this.maxPrice < this.minPrice) this.minMax("Maximum price should be larger than minimum price");
       });
     }
   }
@@ -148,6 +187,58 @@ export class ProductListComponent implements OnInit, OnChanges {
         panelClass: ['custom-snackbar'],
       }
     );
+  }
+
+  private CategoryNotification(message: string) {
+    this.snackBar.open(
+      `${message}`,
+      'Close',
+      {
+        duration: 5000,
+        horizontalPosition: 'right',
+        verticalPosition: 'bottom',
+        panelClass: ['custom-snackbar'],
+      }
+    );
+    console.log(message)
+  }
+  private minMax(message: string) {
+    this.snackBar.open(
+      `${message}`,
+      'Close',
+      {
+        duration: 5000,
+        horizontalPosition: 'right',
+        verticalPosition: 'bottom',
+        panelClass: ['custom-snackbar'],
+      }
+    );
+  }
+  private maxPriceNotification(message: string) {
+    this.snackBar.open(
+      `${message}`,
+      'Close',
+      {
+        duration: 5000,
+        horizontalPosition: 'right',
+        verticalPosition: 'bottom',
+        panelClass: ['custom-snackbar'],
+      }
+    );
+    console.log(message)
+  }
+  private NoProductsFoundNotification(message: string) {
+    this.snackBar.open(
+      `${message}`,
+      'Close',
+      {
+        duration: 5000,
+        horizontalPosition: 'right',
+        verticalPosition: 'bottom',
+        panelClass: ['custom-snackbar'],
+      }
+    );
+    console.log(message)
   }
 
   ProductsTrackByFunction(index: number, product: IProduct): number {

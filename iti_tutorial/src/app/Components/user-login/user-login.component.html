@@ -1,4 +1,25 @@
-<div class="container d-flex gap-5 m-5 justify-content-center">
-  <button type="button" [disabled]="isUserLogged" class="btn btn-primary" (click)="login()">Login</button>
-  <button type="button" [disabled]="!isUserLogged" class="btn btn-primary" (click)="logout()">Logout</button>
+<div class="container d-flex gap-5 m-auto mt-5 justify-content-center">
+  <div class="container">
+    <div class="card">
+      <h2>Login</h2>
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <input formControlName="email" type="text" id="email" name="email" placeholder="Email" required>
+
+        <div class="text-danger" [hidden]="Email?.valid || Email?.untouched">
+          <small *ngIf="Email?.errors?.['required']">Email is required</small>
+          <small *ngIf="Email?.errors?.['ExistEmail']">Exist Email</small>
+          <small *ngIf="Email?.errors?.['email']">Wrong email format</small>
+        </div>
+
+        <input formControlName="password" type="password" id="password" name="password" placeholder="Password" required>
+        <div class="text-danger" [hidden]="Password?.untouched">
+          <small *ngIf="Password?.errors?.['required']">Password is required</small>
+        </div>
+        <!-- <button type="submit">Login</button> -->
+        <button type="submit" >Login</button>
+      </form>
+    </div>
+  </div>
+  <!-- <button type="button" [disabled]="isUserLogged" class="btn btn-primary" (click)="login()">Login</button> -->
+  <!-- <button type="button" [disabled]="!isUserLogged" class="btn btn-primary" (click)="logout()">Logout</button> -->
 </div>

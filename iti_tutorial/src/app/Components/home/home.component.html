@@ -5,7 +5,7 @@
   <h1 class="text-center mt-5">Explore Our Categories</h1>
 
   <ul class="cards justify-content-center">
-    <li class="cards__item" *ngFor="let category of Categories; let i = index">
+    <li class="cards__item" *ngFor="let category of Categories; let i = index" [(ngModel)]="selectedCategoryid">
       <div class="card">
         <div class="card__image card__image--fence">
           <img [src]="category.img" alt="">
@@ -13,16 +13,17 @@
         <div class="card__content">
           <div class="card__title text-center">{{category.name}}</div>
           <p class="card__text mt-3">{{category.description}}</p>
-          <button class="btn btn--block card__btn" (click)="ViewProductsByCategory(category.id)" >View Products</button>
+          <button class="btn btn--block card__btn" (click)="selectCategory(category.id)">View Products</button>
         </div>
       </div>
     </li>
   </ul>
 
-  <h1 class="text-center mt-5">Our Selected Products</h1>
-
-  <app-product-list [sentSelectedCategoryID]="selectedCategoryid"></app-product-list>
-
+  <div>
+    <h1 class="text-center mt-5">Our Selected Products</h1>
+    <app-product-list [sentSelectedCategoryID]="selectedCategoryid"></app-product-list>
+  </div>
+  
 </section>
 
 

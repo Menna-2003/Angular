@@ -31,7 +31,7 @@ export class NavBarComponent implements OnInit, OnChanges {
   }
 
   login() {
-    this.authService.login('menna', '0000');
+    // this.authService.login('menna', '0000');
     this.authService.getLoggedStatus().subscribe((status) => {
       this.isUserLogged = status;
     });

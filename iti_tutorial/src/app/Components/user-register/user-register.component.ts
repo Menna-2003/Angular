@@ -3,7 +3,7 @@ import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Valida
 import { ExistEmailValidator } from 'src/app/CustomValidators/existEmailValidator';
 import { PasswordMatch } from 'src/app/CustomValidators/PasswordMatchValidator';
 import { IUser } from 'src/app/Models/iuser';
-
+import { UserAuthService } from 'src/app/Services/user-auth.service';
 @Component({
   selector: 'app-user-register',
   templateUrl: './user-register.component.html',
@@ -15,7 +15,7 @@ export class UserRegisterComponent implements OnInit {
   userRegisterForm: FormGroup;
   existUserEmails: string[] = [];
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private userAuthService: UserAuthService) {
 
     // call API to fill user emails, or better send the email to the server and get the response
     this.existUserEmails = [
@@ -37,7 +37,9 @@ export class UserRegisterComponent implements OnInit {
         country: ['', [Validators.required, Validators.pattern('[A-Za-z]{3,}')]]
       }),
       referral: [''],
-      referralOther: ['']
+      referralOther: [''],
+      role: [''],
+      admincode: ['']
     }, { validators: PasswordMatch() });
 
 
@@ -75,14 +77,20 @@ export class UserRegisterComponent implements OnInit {
   get Country() {
     return this.Address.get('country');
   }
-
+  get Role() {
+    return this.userRegisterForm.get('role');
+  }
+  get admincode() {
+    return this.userRegisterForm.get('admincode');
+  }
 
 
   submit() {
     let userModel: IUser = this.userRegisterForm.value as IUser
 
     // call API, and send user data
-    console.log(userModel)
+    this.userAuthService.Register(userModel)
+    // console.log(userModel)
   }
 
   UpdateReferralValidator() {
@@ -103,6 +111,17 @@ export class UserRegisterComponent implements OnInit {
 
   RemovePhone(index: number) {
     this.PhoneNumber.removeAt(index)
+  }
+
+  Rolefn() {
+    if (this.Role?.value == 'Admin') {
+      this.userRegisterForm?.get('admincode')?.addValidators([Validators.required]);
+    }
+    else {
+      this.userRegisterForm?.get('admincode')?.clearValidators();
+    }
+    //&  without 'updateValueAndValidity' the addValidators & clearValidators won't be updated
+    this.userRegisterForm?.get('admincode')?.updateValueAndValidity();
   }
 
   //~ Sync validator function

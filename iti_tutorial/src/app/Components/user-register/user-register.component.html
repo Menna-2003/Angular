@@ -69,7 +69,7 @@
             <div class="text-danger" [hidden]="City?.valid || City?.untouched">
                 <small *ngIf="City?.errors?.['required']">City is required</small>
                 <small *ngIf="City?.errors?.['pattern']">City must be at least 3 letters,
-                    '{{FullName?.errors?.['pattern'].actualValue}}' doesn't match </small>
+                    '{{City?.errors?.['pattern'].actualValue}}' doesn't match </small>
             </div>
         </div>
         <div class="form-group mt-3 mb-2 col-4">
@@ -77,6 +77,8 @@
             <input formControlName="country" type="text" class="form-control" id="country" name="country" />
             <div class="text-danger" [hidden]="Country?.untouched">
                 <small *ngIf="Country?.errors?.['required']">Country is required</small>
+                <small *ngIf="Country?.errors?.['pattern']">Country must be at least 3 letters,
+                    '{{Country?.errors?.['pattern'].actualValue}}' doesn't match</small>
             </div>
         </div>
         <div class="form-group mt-3 mb-2 col-4">
@@ -88,39 +90,64 @@
         </div>
     </div>
 
-    <h4 style="font-size: 20px; font-weight:500; margin: 0 20px 0 0 ;">Where did you heard about us?</h4>
+    <div class="d-flex gap-2">
+        <div>
+            <h4 style="font-size: 20px; font-weight:500; margin: 0 20px 0 0 ;">Where did you heard about us?</h4>
 
-    <div class="btn-group mt-3" role="group" aria-label="Basic radio toggle button group">
+            <div class="btn-group mt-3" role="group" aria-label="Basic radio toggle button group">
 
-        <input formControlName="referral" value="socialMedia" type="radio" class="btn-check" name="referral"
-            id="btnradio1" autocomplete="off" (change)="UpdateReferralValidator()">
-        <label class="btn btn-outline-secondary" for="btnradio1">Social Media</label>
+                <input formControlName="referral" value="socialMedia" type="radio" class="btn-check" name="referral"
+                    id="btnradio1" autocomplete="off" (change)="UpdateReferralValidator()">
+                <label class="btn btn-outline-secondary" for="btnradio1">Social Media</label>
 
-        <input formControlName="referral" value="friends" type="radio" class="btn-check" name="referral" id="btnradio2"
-            autocomplete="off" (change)="UpdateReferralValidator()">
-        <label class="btn btn-outline-secondary" for="btnradio2">Friends</label>
+                <input formControlName="referral" value="friends" type="radio" class="btn-check" name="referral"
+                    id="btnradio2" autocomplete="off" (change)="UpdateReferralValidator()">
+                <label class="btn btn-outline-secondary" for="btnradio2">Friends</label>
 
-        <input formControlName="referral" value="other" type="radio" class="btn-check" name="referral" id="btnradio3"
-            autocomplete="off" (change)="UpdateReferralValidator()">
-        <label class="btn btn-outline-secondary" for="btnradio3">Other</label>
+                <input formControlName="referral" value="other" type="radio" class="btn-check" name="referral"
+                    id="btnradio3" autocomplete="off" (change)="UpdateReferralValidator()">
+                <label class="btn btn-outline-secondary" for="btnradio3">Other</label>
+            </div>
+
+            <div class="form-group mt-3 mb-2" *ngIf="Referral?.value === 'other'">
+                <label for="other">Specify</label>
+                <input formControlName="referralOther" type="text" class="form-control w-100" id="other"
+                    name="street" />
+            </div>
+        </div>
+
+        <div>
+            <h4 style="font-size: 20px; font-weight:500; margin: 0 20px 0 0 ;">Pickup a role?</h4>
+
+            <div class="btn-group mt-3" role="group" aria-label="Basic radio toggle button group">
+
+                <input formControlName="role" value="Admin" type="radio" class="btn-check" name="role" id="Admin"
+                    autocomplete="off" (change)="Rolefn()">
+                <label class="btn btn-outline-secondary" for="Admin">Admin</label>
+
+                <input formControlName="role" value="User" type="radio" class="btn-check" name="role" id="User"
+                    autocomplete="off" (change)="Rolefn()">
+                <label class="btn btn-outline-secondary" for="User">User</label>
+            </div>
+
+            <div class="form-group mt-3 mb-2" *ngIf="Role?.value === 'Admin'">
+                <label for="admincode">Enter verification Code</label>
+                <input formControlName="admincode" type="text" class="form-control w-100" id="admincode"
+                    name="admincode" />
+            </div>
+        </div>
     </div>
-
-    <div class="form-group mt-3 mb-2 col-4" *ngIf="Referral?.value === 'other'">
-        <label for="other">Specify</label>
-        <input formControlName="referralOther" type="text" class="form-control" id="other" name="street" />
-    </div>
-
     <button type="submit" [disabled]="userRegisterForm.invalid"
         class="btn btn-success mt-3 mb-2 d-block">Submit</button>
 </form>
 
 <hr>
 
-<div>City: {{ City?.errors|json}}</div><br>
+<!-- <div>role: {{Role|json}}</div> -->
+<!-- <div>City: {{ City?.errors|json}}</div><br> -->
 <!-- <div class="text-danger">
     <div>{{userRegisterForm.value|json}}</div><br>
     <div>userRegisterForm errors: {{userRegisterForm.errors|json}}</div><br>
-    <div>Referral: {{userRegisterForm.get('referralOther')?.errors|json}}</div>
 </div> -->
 <!-- <div>{{userRegisterForm.get('fullname')?.errors|json}}</div><br> -->
 <!-- <button (click)="FillForm()" class="btn btn-secondary mt-3 mb-2">FillForm</button><br> -->
