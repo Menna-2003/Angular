@@ -1,6 +1,7 @@
 # Angular E-Commerce Project
 
 This project is a hands-on implementation of concepts learned during the ITI Angular Course. It is an e-commerce platform where users can browse products, add items to their favorites and cart, register, and log in.
+Project Demo: 
 https://drive.google.com/file/d/19phiwCh_Gje15EEvnQMmelTNA--40Y7V/view?usp=sharing
 
 ## About the Project
